@@ -1,6 +1,6 @@
 <div class="header">
 
-  <div class="user">
+  <div class="user" [routerLink]="['/profile']">
     <img class="m-2" [src]="user['picture']" (load)="imageLoaded = true" alt="">
     <span class="username">{{user['name']}}</span>
   </div>

@@ -28,8 +28,8 @@
 
   <div *ngIf="currentUser['_id'] === post['user']['_id']">
     <div class="actions">
-      <button><i class="fa fa-pencil-alt" (click)="editPost()"></i></button>
-      <button><i class="fa fa-trash-alt" (click)="deletePost()"></i></button>
+      <button (click)="editPost()"><i class="fa fa-pencil-alt" ></i></button>
+      <button (click)="deletePost()"><i class="fa fa-trash-alt" ></i></button>
     </div>
   </div>
 </div>

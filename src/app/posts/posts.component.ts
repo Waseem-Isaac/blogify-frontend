@@ -80,17 +80,9 @@ export class PostsComponent implements OnInit , AfterViewInit{
     }).catch(() => null);
 
   }
-  toggleSidefiter() {
-    // if (this.side_filter.nativeElement.classList.contains('sidebar-lg')) {
-    //   this.side_filter.nativeElement.querySelector('.side-filter-container').style.display = 'none';
-    //   this.side_filter.nativeElement.classList.remove('sidebar-lg');
-    //   this.side_filter.nativeElement.classList.add('sidebar-sm');
-    // } else {
-    //   this.side_filter.nativeElement.classList.add('sidebar-lg');
-    //   this.side_filter.nativeElement.classList.remove('sidebar-sm');
 
-    //   this.side_filter.nativeElement.querySelector('.side-filter-container').style.display = 'block';
-    //   this.side_filter.nativeElement.querySelector('.side-filter-container').style.padding = '20px';
-    // }
+
+  toggleSidefiter(sideFilter: HTMLElement) {
+    sideFilter.classList.toggle('sidebar-lg');
   }
 }

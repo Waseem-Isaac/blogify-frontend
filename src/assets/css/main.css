@@ -3451,8 +3451,10 @@ input[type="button"].btn-block {
     right: 0;
     overflow: auto;
     height: 100%;
-    transition: all .2s ease;
+    transition: width .2s ease;
     width: 25%;
+    box-shadow: 5px 5px 10px #999 !important;
+
   }
 .sidebar-box {
   margin-bottom: 40px;

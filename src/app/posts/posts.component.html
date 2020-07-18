@@ -1,7 +1,7 @@
 <div id="colorlib-page">
     <div id="colorlib-main">
         <section class="ftco-section ftco-no-pt ftco-no-pb">
-            <div class="container-fluid">
+            <!-- <div class="container-fluid"> -->
                 <div class="row d-flex">
                     <div class="posts ">
                         <div class="d-flex p-2 new-post" >
@@ -32,16 +32,17 @@
                         </ng-template>
 
                     </div>
+                    <button (click)="toggleSidefiter(side_filter)">
+                        <i class="fa fa-bars sidebar-toggler"></i>
+                    </button>
                     <div class="sidebar bg-light pt-5" #side_filter>
-                        <a (click)="toggleSidefiter()" class="fa fa-bars sidebar-toggler"></a>
-
                         <div class="side-filter-container">
                             <app-side-filter></app-side-filter>
                         </div>
 
                     </div><!-- END COL -->
                 </div>
-            </div>
+            <!-- </div> -->
         </section>
     </div><!-- END COLORLIB-MAIN -->
 </div><!-- END COLORLIB-PAGE -->
