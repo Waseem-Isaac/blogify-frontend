@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PostFormComponent } from 'src/app/posts/post-form/post-form.component';
 import { ToastrService } from 'ngx-toastr';
+import { PostsService } from 'src/app/posts/services/posts.service';
 
 @Component({
   selector: 'app-header',
@@ -12,9 +13,12 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class HeaderComponent implements OnInit , AfterViewInit {
   user = localStorage.getItem('credentials') || null;
+  imageLoaded = false;
 
   constructor(private userService: UserService, private router: Router,
-      private modalService: NgbModal, private toastrService: ToastrService) { }
+      private modalService: NgbModal, private toastrService: ToastrService,
+      private postsService: PostsService
+      ) { }
 
   ngOnInit() {
     this.user = this.user && JSON.parse(this.user).userData;
@@ -31,6 +35,7 @@ export class HeaderComponent implements OnInit , AfterViewInit {
     modalRef.componentInstance.formType = 'create';
     modalRef.result.then(res => {
       this.toastrService.success(res.message , 'Success');
+      this.postsService.postAdded$.next(res);
     }).catch(() => null);
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import {BaseHttpServiceService} from '../utiles/services/base-http.service';
 import { Observable, merge, observable } from 'rxjs';
 import { Post } from '../utiles/models/Post';
@@ -15,9 +15,8 @@ import { PostFormComponent } from './post-form/post-form.component';
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.scss']
 })
-export class PostsComponent implements OnInit {
+export class PostsComponent implements OnInit , AfterViewInit{
   posts: any[];
-  loadPosts$ = this.postsService.loadPosts$;
   @ViewChild('side_filter') side_filter: ElementRef;
 
   constructor(private postsService: PostsService, private userService: UserService, private router: Router,
@@ -25,9 +24,7 @@ export class PostsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.loadPosts$.subscribe(res => {
       this.loadAllPosts();
-    });
   }
 
   loadAllPosts() {
@@ -43,14 +40,46 @@ export class PostsComponent implements OnInit {
       );
   }
 
+  ngAfterViewInit() {
+    this.postsService.postAdded$.subscribe(res => {
+      if (this.posts) {
+        this.posts.unshift(res['post']);
+      }
+    });
+  }
+
   createPost() {
     const modalRef = this.modalService.open(PostFormComponent, { centered: true , windowClass: 'post-form-modal'});
     modalRef.componentInstance.formType = 'create';
     modalRef.result.then(res => {
-      this.toastrService.success(res.message , 'Success');
+      this.toastrService.success(res['message'] , 'Success');
+      this.posts.unshift(res['post']);
     }).catch(() => null);
   }
 
+  editPost(post, index) {
+    const modalRef = this.modalService.open(PostFormComponent, { centered: true , windowClass: 'post-form-modal'});
+    modalRef.componentInstance.formType = 'edit';
+    modalRef.componentInstance.post = post;
+
+    modalRef.result.then(res => {
+      this.toastrService.success(res.message , 'Post Editted Successfully');
+      this.posts[index] = res['post'];
+    }).catch(() => null);
+  }
+
+  deletePost(post, index) {
+    const modalRef = this.modalService.open(PostFormComponent, { centered: true , windowClass: 'post-form-modal'});
+    modalRef.componentInstance.formType = 'delete';
+    modalRef.componentInstance.post = post;
+    modalRef.componentInstance.deletePost = true;
+
+    modalRef.result.then(res => {
+      this.toastrService.success(res.message , 'Post Deleted Successfully');
+      this.posts.splice(index, 1);
+    }).catch(() => null);
+
+  }
   toggleSidefiter() {
     // if (this.side_filter.nativeElement.classList.contains('sidebar-lg')) {
     //   this.side_filter.nativeElement.querySelector('.side-filter-container').style.display = 'none';

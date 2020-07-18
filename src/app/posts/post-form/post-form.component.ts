@@ -34,8 +34,8 @@ export class PostFormComponent implements OnInit {
     const body = { content: this.postContent.trim(), user_id: this.userData['_id'] };
 
     this.postsService.savePost(body).subscribe(res => {
+      res['post']['user'] = this.userData;
       this.activeModal.close(res);
-      this.postsService.loadPosts$.next(true);
     }, (err: HttpErrorResponse) => {
       const ErrMsg = err.error.message ? err.error.message : 'API Error : ' + err.statusText;
       this.toastr.error(ErrMsg, 'Error', { disableTimeOut: true });
@@ -46,8 +46,9 @@ export class PostFormComponent implements OnInit {
     const body = { content: this.postContent.trim() };
 
     this.postsService.editPost(body, this.post._id).subscribe(res => {
+      res['post']['user'] = this.userData;
+      res['post']['content'] = body.content;
       this.activeModal.close(res);
-      this.postsService.loadPosts$.next(true);
     }, (err: HttpErrorResponse) => {
       const ErrMsg = err.error.message ? err.error.message : 'API Error : ' + err.statusText;
       this.toastr.error(ErrMsg, 'Error', { disableTimeOut: true });
@@ -57,7 +58,6 @@ export class PostFormComponent implements OnInit {
   delete_post() {
     this.postsService.deletePost(this.post['_id']).subscribe(res => {
       this.activeModal.close(res);
-      this.postsService.loadPosts$.next(true);
     }, (err: HttpErrorResponse) => {
       const ErrMsg = err.error.message ? err.error.message : 'API Error : ' + err.statusText;
       this.toastr.error(ErrMsg, 'Error', { disableTimeOut: true });

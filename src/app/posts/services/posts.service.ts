@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class PostsService {
-    loadPosts$: BehaviorSubject<boolean> = new BehaviorSubject(false);
+    postAdded$: BehaviorSubject<any> = new BehaviorSubject({});
 
     constructor(private baseHttpService: BaseHttpServiceService) { }
 

@@ -1,7 +1,7 @@
 <div class="header">
 
   <div class="user">
-    <img class="m-2" [src]="user['picture']" alt="">
+    <img class="m-2" [src]="user['picture']" (load)="imageLoaded = true" alt="">
     <span class="username">{{user['name']}}</span>
   </div>
   

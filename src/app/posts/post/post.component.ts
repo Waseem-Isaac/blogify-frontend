@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { PostFormComponent } from '../post-form/post-form.component';
+import { Post } from 'src/app/utiles/models/Post';
 
 @Component({
   selector: 'app-post',
@@ -10,8 +11,12 @@ import { PostFormComponent } from '../post-form/post-form.component';
 })
 export class PostComponent implements OnInit {
   @Input() post;
+  @Output() delete = new EventEmitter<Post>();
+  @Output() edit = new EventEmitter<Post>();
+
   imgLoaded = false;
   currentUser = localStorage.getItem('credentials') || null;
+
 
   constructor(
     private modalService: NgbModal, private toastrService: ToastrService
@@ -24,25 +29,10 @@ export class PostComponent implements OnInit {
 
 
   editPost() {
-    const modalRef = this.modalService.open(PostFormComponent, { centered: true , windowClass: 'post-form-modal'});
-    modalRef.componentInstance.formType = 'edit';
-    modalRef.componentInstance.post = this.post;
-
-    modalRef.result.then(res => {
-      console.log(res);
-      this.toastrService.success(res.message , 'Post Editted Successfully');
-    }).catch(() => null);
+    this.edit.emit(this.post);
   }
 
   deletePost() {
-    const modalRef = this.modalService.open(PostFormComponent, { centered: true , windowClass: 'post-form-modal'});
-    modalRef.componentInstance.formType = 'delete';
-    modalRef.componentInstance.post = this.post;
-    modalRef.componentInstance.deletePost = true;
-
-    modalRef.result.then(res => {
-      console.log(res);
-      this.toastrService.success(res.message , 'Post Deleted Successfully');
-    }).catch(() => null);
+   this.delete.emit(this.post);
   }
 }
