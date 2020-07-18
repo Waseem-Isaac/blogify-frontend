@@ -1,0 +1,56 @@
+/* You can add global styles to this file, and also import other style files */
+// imports for google fonts
+@import url('https://fonts.googleapis.com/css?family=Unica+One');
+@import url('https://fonts.googleapis.com/css?family=Karla:400,700');
+@import url('https://fonts.googleapis.com/css?family=Cairo');
+@import '~ngx-toastr/toastr';
+@import 'variables.scss';
+
+#toast-container > div {
+    opacity:1;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: $main-color;
+    border-radius: 5px;
+  }
+  
+  .ng-tooltip {
+    position: absolute;
+    max-width: 150px;
+    font-size: 14px;
+    text-align: center;
+    color: #f8f8f2;
+    padding: 3px 8px;
+    background: #282a36;
+    border-radius: 4px;
+    z-index: 1000;
+    opacity: 0;
+  }
+
+  .ng-tooltip:after {
+    content: "";
+    position: absolute;
+    border-style: solid;
+
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-color: transparent black transparent transparent;
+  }
+ 
+  .ng-tooltip-show {
+    opacity: 1;
+  }

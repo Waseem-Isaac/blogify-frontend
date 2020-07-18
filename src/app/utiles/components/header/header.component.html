@@ -1,0 +1,16 @@
+<div class="header">
+
+  <div class="user">
+    <img class="m-2" [src]="user['picture']" alt="">
+    <span class="username">{{user['name']}}</span>
+  </div>
+  
+  <div class="actions mt-5">
+        <button class="btn btn-success" (click)="openPostFormCMPT()" tooltip="New Post" delay = "500">
+          <i class="fa fa-sticky-note icon" ></i>
+        </button>
+        <button class="btn btn-danger" (click)="logout()"  tooltip="Log Out" delay = "500">
+          <i class="fa fa-sign-out-alt icon"></i>
+        </button>
+  </div>
+</div>

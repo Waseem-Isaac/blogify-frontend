@@ -1,0 +1,79 @@
+<div class="accounts">
+  <section class="acounts-form">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-8">
+          <div class="form-wrapper">
+    
+            <h2 class="form-title">
+              login
+            </h2>
+            <div class="form-body">
+              <form  [formGroup]="loginForm" (ngSubmit)='login()'>
+                <div class="form-group">
+                  <input class="form-control" type="email" id="email" formControlName="email" [placeholder]="'email'" >
+                  <div class="invalid-feedback">youMissedThisOne</div>
+                </div><!--End Form-group-->
+                
+                <div class="form-group">
+                  <input class="form-control" type="password" id="password" formControlName="password" [placeholder]="'password'">
+                  <div class="invalid-feedback">'Enter your password</div>
+                </div><!--End Form-group-->
+            
+                <div class="form-group">
+                  <div class="save-pass custom-checkbox">
+                    <label>
+                      Remember Me
+                      <input id="rememberMe" type="checkbox" formControlName="rememberMe">
+                      <span>
+                        <i class="fa fa-check"></i>
+                      </span>
+  
+                    </label>
+                  </div>
+                </div>
+  
+                <div class="alert alert-danger" *ngIf="apiErrors['message'] && !isLoading">
+                  {{apiErrors['message']}}
+                </div>
+  
+                <div class="form-group">
+                  <button class="submit-btn" type="submit" [disabled]='loginForm.invalid || isLoading'>
+                    <span *ngIf="!isLoading">login</span>
+                    <app-spinner *ngIf="isLoading" [size] = "'sm'"></app-spinner>
+  
+                  </button>
+                </div><!--End Form-group-->
+  
+                <div class="form-group">
+                  <a class="form-link" routerLink="/">forget your password</a>
+                  <a class="form-link" routerLink="/user/register">register</a>
+                </div><!--End Form-group-->
+  
+                <div class="form-group">
+                  <ng-container>
+                    <div class="social-login">
+                      <div>
+                        <span class="or">Or</span>
+                        <span>Login With</span>
+                      </div>
+                      <div class="row sm-gutters">
+                        <div class="col">
+                          <a class="social-login-btn facebook-login">
+                            <i class="fab fa-facebook-f"></i>
+                            <p> facebook </p>
+                          </a>
+                        </div><!--End col-->
+                      </div><!--End row-->
+                    </div><!--End Social login-->
+                  </ng-container>
+                </div><!--End Form-group-->
+              </form>
+            </div><!--End Form-body-->
+          </div><!--End Foem-wrapper-->
+        </div><!--End Col-->
+      </div><!--End Row-->
+    </div><!--End container-->
+  </section><!--End Accounts_form-->
+  
+</div>

@@ -1,0 +1,44 @@
+@import '../../../variables.scss';
+.modal-header {
+ button.close-modal {
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    color: #666;
+ }
+}
+.modal-body {
+    textarea.form-control {
+        border: none;
+        outline: none;
+        font-size: 25px;
+        font-weight: 600;
+        &:focus {
+            box-shadow: none;
+        }
+    }
+}
+.modal-footer {
+    button.save-post , button.delete-post {
+        color: #fff;
+        border-radius: 5px;
+        &:disabled {
+            cursor: not-allowed;
+        }
+        &.save-post {
+            background-color: $main-color;
+        }
+        &.delete-post { 
+            background-color: #dc3545;
+        }
+    }
+    
+}

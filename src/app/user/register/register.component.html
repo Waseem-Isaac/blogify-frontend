@@ -1,0 +1,85 @@
+
+<div class="accounts">
+  <section class="acounts-form">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-8">
+          <div class="form-wrapper">
+    
+            <h2 class="form-title">
+              Register
+            </h2>
+            <div class="form-body">
+              <form [formGroup]="registerForm" (ngSubmit)="register()" >
+                <div class="form-group">
+                  <input class="form-control" type="text"  id="name" [placeholder]="'name'" formControlName="name">
+                  <small class="text-danger" *ngIf="registerForm.controls['name'].touched && registerForm.controls['name'].invalid">
+                    Name is required
+                  </small>
+                </div><!--End Form-group-->
+  
+                <div class="form-group">
+                  <input class="form-control" type="email"  id="email" [placeholder]="'email'" formControlName="email">
+                  <div class="text-danger" *ngIf="registerForm.controls['email'].touched && registerForm.controls['email'].invalid">
+                    <small class="text-danger" *ngIf="registerForm.controls['email'].errors['required']">
+                      Email is required
+                    </small>
+                    <small class="text-danger" *ngIf="registerForm.controls['email'].errors['pattern']">
+                      Email must be valid
+                    </small>
+                  </div>
+                </div><!--End Form-group-->
+                
+                <div class="form-group">
+                  <input class="form-control" type="password"  id="password" [placeholder]="'password'" formControlName="password">
+                  <div class="text-danger" *ngIf="registerForm.controls['password'].touched && registerForm.controls['password'].invalid">
+                    <small class="text-danger" *ngIf="registerForm.controls['password'].errors['required']">
+                      Password is required
+                    </small>
+                    <small class="text-danger" *ngIf="registerForm.controls['password'].errors['minlength']">
+                      Password must not be less than 6 characters
+                    </small>
+                  </div>
+                </div><!--End Form-group-->
+            
+                <div class="alert alert-danger" *ngIf="apiErrors['message'] && !isLoading">
+                  {{apiErrors['message']}}
+                </div>
+  
+                <div class="form-group">
+                  <button class="submit-btn" type="submit" [disabled]='registerForm.invalid || isLoading'>
+                    <span *ngIf="!isLoading">Sign up</span>
+                    <app-spinner *ngIf="isLoading" [size] = "'sm'"></app-spinner>
+                  </button>
+                </div><!--End Form-group-->
+  
+                <div class="form-group">
+                  <a class="form-link" routerLink="/user/login">Already a member ? Login</a>
+                </div><!--End Form-group-->
+  
+                <div class="form-group">
+                  <ng-container>
+                    <div class="social-login">
+                      <div>
+                        <span class="or">Or</span>
+                        <span>Register with </span>
+                      </div>
+                      <div class="row sm-gutters">
+                        <div class="col">
+                          <a class="social-login-btn facebook-login">
+                            <i class="fab fa-facebook-f"></i>
+                            <p> facebook </p>
+                          </a>
+                        </div><!--End col-->
+                      </div><!--End row-->
+                    </div><!--End Social login-->
+                  </ng-container>
+                </div><!--End Form-group-->
+              </form>
+            </div><!--End Form-body-->
+          </div><!--End Foem-wrapper-->
+        </div><!--End Col-->
+      </div><!--End Row-->
+    </div><!--End container-->
+  </section><!--End Accounts_form-->
+</div>

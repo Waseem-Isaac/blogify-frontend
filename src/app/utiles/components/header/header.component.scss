@@ -1,0 +1,98 @@
+@import '../../../../variables.scss';
+
+:host {
+
+    .header {
+        .nav-toggler {
+            color: #fff;
+            position: absolute;
+            top: 10px;
+        }
+        background-color: $main-color;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        padding: 10px;
+        height: 100vh;
+        z-index: 1000;
+        box-shadow: 0px 0px 5px;
+        transition: width .2s ease;
+
+        width: 100px;
+        position: fixed;
+        .user {
+            text-align: center;
+            img {
+                border-radius: 50%;
+                width: 70%; 
+                border: 3px solid #fff;
+            }
+            .username {
+                font-size: 17px;
+                color: #fff;
+
+            }
+        }
+        .actions {
+            text-align:center;
+            button {
+                margin: 10px;
+                width: 45px;
+                height: 45px;
+            }
+            
+        }
+    }
+
+    @media (max-width: 992px) {
+        .header {
+            width: 50px;
+            .user {
+                img { width: 30px;}
+                .username { display: none;}
+            }
+            .actions {
+                button {
+                    width: 30px;
+                    height: 30px;
+                    .text {
+                        display: none;
+                    }
+                    .icon {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
+            }
+        }
+    }
+    
+    .header-sm{
+        width: 50px;
+
+        .user {
+            img { 
+                img { width: 30px !important;}
+            }
+            .username { display: none;}
+        }
+        .actions {
+            button {
+                width: 30px;
+                height: 30px;
+                .text {
+                    display: none;
+                }
+                .icon {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+        }
+    }   
+}
+
+

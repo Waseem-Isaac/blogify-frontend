@@ -1,0 +1,57 @@
+<div id="colorlib-page">
+    <div id="colorlib-main">
+        <section class="ftco-section ftco-no-pt ftco-no-pb">
+            <div class="container-fluid">
+                <div class="row d-flex">
+                    <div class="posts ">
+
+
+
+
+                        <div class="d-flex p-2 new-post" >
+                            <img src="../../assets/icons/favicon.png" alt="">
+                            <button (click)="createPost()">What's on your mind ?</button>
+                        </div>
+
+
+
+
+
+
+
+
+
+                        <div class="row p-5 px-md-5" *ngIf="posts; else loading">
+
+                            <ng-container *ngIf="posts.length ;else noPosts">
+                                <div class="col-md-12" *ngFor="let post of posts">
+                                    <app-post [post]="post"></app-post>
+                                </div>
+                            </ng-container>
+                            <ng-template #noPosts>
+                                No Posts
+                            </ng-template>
+                        </div><!-- END-->
+
+                        <ng-template #loading>
+                            <div class="loading-spinner">
+                                <app-spinner [size]="'lg'"></app-spinner>
+                            </div>
+                        </ng-template>
+
+
+
+                    </div>
+                    <div class="sidebar bg-light pt-5" #side_filter>
+                        <a (click)="toggleSidefiter()" class="fa fa-bars sidebar-toggler"></a>
+
+                        <div class="side-filter-container">
+                            <app-side-filter></app-side-filter>
+                        </div>
+
+                    </div><!-- END COL -->
+                </div>
+            </div>
+        </section>
+    </div><!-- END COLORLIB-MAIN -->
+</div><!-- END COLORLIB-PAGE -->
