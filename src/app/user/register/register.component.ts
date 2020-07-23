@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { finalize } from 'rxjs/operators';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-register',
@@ -15,6 +16,7 @@ export class RegisterComponent implements OnInit {
   apiErrors =  {};
 
   uploadedImage: string;
+  baseUrl = environment.baseUrl;
 
   constructor(private fb: FormBuilder, private userService: UserService, private router: Router) { }
 

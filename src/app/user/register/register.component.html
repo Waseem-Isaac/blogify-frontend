@@ -21,7 +21,7 @@
                     (change)="processFile(imageInput)"
                     >
                     <label for="file" [ngClass]="{'d-none' :uploadedImage}">Choose a file</label>
-                    <img *ngIf="uploadedImage" class="user-img rounded-circle" [src]=' "http://localhost:3000/" +uploadedImage' alt="">
+                    <img *ngIf="uploadedImage" class="user-img rounded-circle" [src]=' baseUrl+uploadedImage' alt="">
 
                 </div>
 
