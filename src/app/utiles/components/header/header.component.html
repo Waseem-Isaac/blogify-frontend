@@ -1,7 +1,10 @@
 <div class="header">
 
   <div class="user" [routerLink]="['/profile']">
-    <img class="m-2" [src]="baseUrl + user['picture']" (load)="imageLoaded = true" alt="">
+    <img class="m-2" [src]="baseUrl + user['picture']" (load)="imageLoaded = true" alt=""
+    (error)="user_img.src = user['picture']"
+    #user_img
+    >
     <span class="username">{{user['name']}}</span>
   </div>
   
