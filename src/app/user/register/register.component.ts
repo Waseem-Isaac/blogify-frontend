@@ -14,6 +14,8 @@ export class RegisterComponent implements OnInit {
   isLoading = false;
   apiErrors =  {};
 
+  uploadedImage: string;
+
   constructor(private fb: FormBuilder, private userService: UserService, private router: Router) { }
 
   ngOnInit() {
@@ -30,7 +32,10 @@ export class RegisterComponent implements OnInit {
 
   register() {
     this.isLoading = true;
-    this.userService.register(this.registerForm.value).pipe(
+    const user = this.registerForm.value;
+    if (this.uploadedImage) {  user['picture'] = this.uploadedImage; }
+
+    this.userService.register(user).pipe(
       finalize(() => {
         this.isLoading = false;
       })
@@ -45,5 +50,21 @@ export class RegisterComponent implements OnInit {
         this.apiErrors['message'] = err['error']['message'].replace(/\,/g,  ' \n ' );
       }
     });
+  }
+
+  processFile(imageInput) {
+    const file: File = imageInput.files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener('load', (event) => {
+      this.userService.uploadImage(file)
+      .subscribe(res => {
+        this.uploadedImage = res['file']['path'];
+      }, err => {
+        console.log(err);
+      });
+    });
+
+    reader.readAsDataURL(file);
   }
 }

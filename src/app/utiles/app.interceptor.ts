@@ -14,7 +14,6 @@ export class AppInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
         const headers = req.headers
-            .set('Content-Type', 'application/json')
             .set('authorization' , this._jwt);
 
         const authReq = req.clone({ headers });

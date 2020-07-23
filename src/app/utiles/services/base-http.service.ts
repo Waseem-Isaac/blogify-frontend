@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders  } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 
 import { from, Observable, of, BehaviorSubject } from 'rxjs';
@@ -33,4 +33,8 @@ export class BaseHttpServiceService {
     }
     getById(id) {}
 
+    upload(path, body) {
+
+        return this.httpClient.post(`${this.apiUrl}/${path}` , body, {headers : {'s-Type': 'ddd'}} );
+    }
 }

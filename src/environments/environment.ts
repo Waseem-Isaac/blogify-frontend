@@ -4,8 +4,10 @@
 
 export const environment = {
   production: false,
-  api_url: 'https://blogify-backend.herokuapp.com/api/v1'
-  // api_url: 'http://localhost:3000/api/v1'
+  // api_url: 'https://blogify-backend.herokuapp.com/api/v1'
+  // baseUrl: 'https://blogify-backend.herokuapp.com/'
+  api_url: 'http://localhost:3000/api/v1',
+  baseUrl: 'http://localhost:3000/'
 
 };
 

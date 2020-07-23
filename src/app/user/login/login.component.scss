@@ -27,8 +27,43 @@
           }
           margin-bottom: 15px;
         }
+
+        .uploadImg{ 
+          height: 100px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+
+        .inputfile {
+          width: 0.1px;
+          height: 0.1px;
+          opacity: 0;
+          overflow: hidden;
+          position: absolute;
+          z-index: -1;
+        }
+        .inputfile + label {
+          font-size: 1rem;
+          font-weight: 400;
+          color: #666;
+          padding: 0 0.75rem;
+          background-color: #f4f4f4;
+          display: inline-block;
+          cursor: pointer;
+          height: 48px;
+
+          display: flex;
+          align-items: center;
+      }
+      
+     
         .form-group {
           // margin-bottom: 10px;
+          .user-img {
+            width: 15%;
+          }
           .form-control {
             border-radius: 0;
             background-color: #f4f4f4;

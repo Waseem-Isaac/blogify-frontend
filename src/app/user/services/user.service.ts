@@ -53,4 +53,10 @@ export class UserService {
     }
 
   }
+
+  uploadImage(image: File) {
+    const formData: FormData = new FormData();
+    formData.append('image', image, image.name);
+   return this.baseHttpService.upload('upload', formData);
+  }
 }

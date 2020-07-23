@@ -5,6 +5,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PostFormComponent } from 'src/app/posts/post-form/post-form.component';
 import { ToastrService } from 'ngx-toastr';
 import { PostsService } from 'src/app/posts/services/posts.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -14,6 +15,7 @@ import { PostsService } from 'src/app/posts/services/posts.service';
 export class HeaderComponent implements OnInit , AfterViewInit {
   user = localStorage.getItem('credentials') || null;
   imageLoaded = false;
+  baseUrl = environment.baseUrl;
 
   constructor(private userService: UserService, private router: Router,
       private modalService: NgbModal, private toastrService: ToastrService,
