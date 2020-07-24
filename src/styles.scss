@@ -2,7 +2,8 @@
 // imports for google fonts
 @import url('https://fonts.googleapis.com/css?family=Unica+One');
 @import url('https://fonts.googleapis.com/css?family=Karla:400,700');
-@import url('https://fonts.googleapis.com/css?family=Cairo');
+@import url('https://fonts.googleapis.com/css?family=Cairo:wght@600');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@500&family=Poppins:wght@200;300&display=swap');
 @import '~ngx-toastr/toastr';
 @import 'variables.scss';
 
@@ -53,4 +54,7 @@
  
   .ng-tooltip-show {
     opacity: 1;
+  }
+  h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
+    font-family: "cairo", Arial, serif;
   }

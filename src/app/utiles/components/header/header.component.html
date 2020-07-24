@@ -1,7 +1,15 @@
 <div class="header">
 
+  <div class="home" [routerLink]="['/']">
+    <img class="m-2" src="../../../../assets/icons/favicon2.png"
+    >
+
+  </div>
+
+
   <div class="user" [routerLink]="['/profile']">
     <img class="m-2" [src]="user['picture']" (load)="imageLoaded = true" alt=""
+      (error) ="user_img.src = 'https://ui-avatars.com/api/?background=29a0e9&color=fff&name='+user['name']"
     #user_img
     >
     <span class="username">{{user['name']}}</span>

@@ -31,10 +31,6 @@
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "node_modules/ngx-toastr/toastr.css",
 
-              "src/assets/css/aos.css",
-              "src/assets/css/flaticon.css",
-              "src/assets/css/ionicons.min.css",
-              "src/assets/css/magnific-popup.css",
               "src/assets/css/main.css",
 
               "src/styles.scss"
