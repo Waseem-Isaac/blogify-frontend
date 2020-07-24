@@ -3,7 +3,6 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { PostFormComponent } from '../post-form/post-form.component';
 import { Post } from 'src/app/utiles/models/Post';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-post',
@@ -17,8 +16,6 @@ export class PostComponent implements OnInit {
 
   imgLoaded = false;
   currentUser = localStorage.getItem('credentials') || null;
-  baseUrl = environment.baseUrl;
-
 
   constructor(
     private modalService: NgbModal, private toastrService: ToastrService

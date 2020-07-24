@@ -15,7 +15,6 @@ import { environment } from 'src/environments/environment';
 export class HeaderComponent implements OnInit , AfterViewInit {
   user = localStorage.getItem('credentials') || null;
   imageLoaded = false;
-  baseUrl = environment.baseUrl;
 
   constructor(private userService: UserService, private router: Router,
       private modalService: NgbModal, private toastrService: ToastrService,

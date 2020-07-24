@@ -3,8 +3,8 @@
       <ng-container *ngIf="!imgLoaded">
           <app-spinner [size] = "'sm'"></app-spinner>
       </ng-container>
-      <img class="w-100 h-100 rounded-circle" [src]="baseUrl + post?.user?.picture" [hidden]="!imgLoaded" (load) ="imgLoaded = true" 
-        (error)="user_img.src = post?.user?.picture"
+      <img class="w-100 h-100 rounded-circle" [src]="post?.user?.picture" [hidden]="!imgLoaded" (load) ="imgLoaded = true" 
+      
       alt="" #user_img>
   </div>
       

@@ -16,8 +16,7 @@ export class RegisterComponent implements OnInit {
   apiErrors =  {};
 
   uploadedImage: string;
-  baseUrl = environment.baseUrl;
-
+  showProgressBar = false;
   constructor(private fb: FormBuilder, private userService: UserService, private router: Router) { }
 
   ngOnInit() {
@@ -55,13 +54,16 @@ export class RegisterComponent implements OnInit {
   }
 
   processFile(imageInput) {
+
+    this.showProgressBar = true;
     const file: File = imageInput.files[0];
     const reader = new FileReader();
 
     reader.addEventListener('load', (event) => {
       this.userService.uploadImage(file)
       .subscribe(res => {
-        this.uploadedImage = res['file']['path'];
+        this.uploadedImage = res['imagePath'];
+        this.showProgressBar = false;
       }, err => {
         console.log(err);
       });
