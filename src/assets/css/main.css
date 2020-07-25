@@ -652,8 +652,8 @@
     height: 100%;
     transition: width .2s ease;
     width: 25%;
-    box-shadow: 5px 5px 10px #999 !important;
-
+    /* box-shadow: 5px 5px 10px #999 !important; */
+    background-color: #fff;
   }
 .sidebar-box {
   margin-bottom: 40px;

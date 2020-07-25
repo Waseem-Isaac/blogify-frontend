@@ -32,10 +32,10 @@
                         </ng-template>
 
                     </div>
-                    <button (click)="toggleSidefiter(side_filter)">
-                        <i class="fa fa-bars sidebar-toggler"></i>
+                    <button class="sidebar-toggler" (click)="toggleSidefiter(side_filter)">
+                        <i class="fa fa-filter "></i>
                     </button>
-                    <div class="sidebar bg-light pt-5" #side_filter>
+                    <div class="sidebar pt-5" #side_filter>
                         <div class="side-filter-container">
                             <app-side-filter></app-side-filter>
                         </div>

@@ -43,6 +43,15 @@
                 margin: 10px;
                 width: 45px;
                 height: 45px;
+             &:not(.btn-danger){
+                color: $main-color;
+                background-color: #fff;
+                border: none;
+                transition: color .3s ease;
+                &:hover {
+                    color: $main-color-hover;
+                }
+             }
             }
             
         }
@@ -96,6 +105,13 @@
             }
         }
     }   
+
+
+    @media (max-width: 400px) {
+        .header {
+            display: none;
+        }
+    }
 }
 
 
