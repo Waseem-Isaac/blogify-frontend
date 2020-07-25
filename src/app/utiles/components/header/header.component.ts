@@ -42,4 +42,8 @@ export class HeaderComponent implements OnInit , AfterViewInit {
 
   ngAfterViewInit() {
   }
+
+  openSideHeader(header: HTMLElement) {
+    header.classList.toggle('d-flex')
+  }
 }

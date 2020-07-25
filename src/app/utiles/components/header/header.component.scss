@@ -29,7 +29,7 @@
                 border-radius: 50%;
                 width: 50px; 
                 height: 50px;
-                border: 2px solid #fff;
+                // border: 2px solid #fff;
             }
             .username {
                 font-size: 17px;
@@ -82,6 +82,8 @@
     }
     
     .header-sm{
+        transition: all .2s ease;
+
         width: 50px;
 
         .user {
@@ -115,3 +117,27 @@
 }
 
 
+
+
+.header-side-menu-toggler {   
+    position: fixed;
+    font-size: 15px;
+    top: 60px;
+    left: -20px;
+    background: #29a0e9;
+    width: 30px;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    color: #fff !important;
+    box-shadow: 0px 0px 4px #777;
+    z-index: 100000;
+}
+@media (min-width: 400px) {
+  .header-side-menu-toggler {
+    display: none;
+  }
+}

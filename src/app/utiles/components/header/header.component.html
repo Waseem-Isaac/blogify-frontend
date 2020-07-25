@@ -1,7 +1,11 @@
-<div class="header">
+ <button (click)="openSideHeader(header)"
+  class="header-side-menu-toggler mx-2"> <i class="fa fa-bars"></i></button>
+
+
+<div class="header" #header>
 
   <div class="home" [routerLink]="['/']">
-    <img class="m-2" src="../../../../assets/icons/favicon2.png"
+    <img class="m-2" src="../../../../assets/icons/favicon-header.png"
     >
 
   </div>
