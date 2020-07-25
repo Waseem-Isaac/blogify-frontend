@@ -3,6 +3,7 @@
 :host {
 
     .header {
+
         .nav-toggler {
             color: #fff;
             position: absolute;
@@ -17,7 +18,7 @@
         height: 100vh;
         z-index: 1000;
         box-shadow: 0px 0px 5px;
-        transition: width .2s ease;
+        transition: all .2s ease;
 
         width: 100px;
         position: fixed;
@@ -82,8 +83,6 @@
     }
     
     .header-sm{
-        transition: all .2s ease;
-
         width: 50px;
 
         .user {
@@ -111,12 +110,16 @@
 
     @media (max-width: 400px) {
         .header {
-            display: none;
+            // display: none;
+            margin-left: -50px;
         }
     }
 }
 
 
+.ml-0{
+    margin-left: 0;
+}
 
 
 .header-side-menu-toggler {   
@@ -132,10 +135,16 @@
     border: none;
     outline: none;
     border-radius: 50%;
-    color: #fff !important;
+    color: #fff ;
     box-shadow: 0px 0px 4px #777;
     z-index: 100000;
 }
+
+.header-side-menu-toggler.opened {
+    background: #fff;
+    color: #29a0e9;
+}
+
 @media (min-width: 400px) {
   .header-side-menu-toggler {
     display: none;
