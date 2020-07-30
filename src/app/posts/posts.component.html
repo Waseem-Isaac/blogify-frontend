@@ -12,7 +12,7 @@
                         <div class="row p-5 px-md-5" *ngIf="posts; else loading">
 
                             <ng-container *ngIf="posts.length ;else noPosts">
-                                <div class="col-md-12" *ngFor="let post of posts; let i= index">
+                                <div class="col-md-12 posts-container" *ngFor="let post of posts; let i= index">
                                     <app-post [post]="post" (edit)="editPost($event, i)" (delete)='deletePost($event, i)'></app-post>
                                 </div>
                             </ng-container>

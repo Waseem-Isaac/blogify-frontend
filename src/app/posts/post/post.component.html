@@ -1,24 +1,25 @@
 <div class="blog-entry   d-md-flex">
-  
-  
-
   <div class="img img-2">
       <ng-container *ngIf="!imgLoaded">
           <app-spinner [size] = "'sm'"></app-spinner>
       </ng-container>
       <img class="w-100 h-100 rounded-circle" [src]="post?.user?.picture" [hidden]="!imgLoaded" (load) ="imgLoaded = true" 
-        (error) ="user_img.src = 'https://ui-avatars.com/api/?background=29a0e9&color=fff&name='+post.user?.name"
-      alt="" #user_img>
+        (error) ="user_img1.src = 'https://ui-avatars.com/api/?background=f0f0f0&color=29a0e9&name='+post.user?.name"
+      alt="" #user_img1>
   </div>
-      
+
   <div class="text text-2 pl-md-4">
       <h3 class="mb-2">
+
+        <img class="sm w-50-h-50 rounded-circle" [src]="post?.user?.picture" [hidden]="!imgLoaded" (load) ="imgLoaded = true" 
+        (error) ="user_img2.src = 'https://ui-avatars.com/api/?background=f0f0f0&color=29a0e9&name='+post.user?.name"
+        alt="" #user_img2>
+
         <a href="single.html">
           {{post.user?.name}} 
-          <!-- {{currentUser['id']}}
-          {{post['user']['id']}} -->
           <span *ngIf="currentUser['_id'] === post['user']['_id']" class="badge badge-secondary">Me</span>
-        </a></h3>
+        </a>
+      </h3>
       <div class="meta-wrap">
           <p class="meta">
               <span><i class="far fa-calendar mr-1"></i>June 28, 2019</span>

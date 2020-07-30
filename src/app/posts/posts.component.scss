@@ -86,3 +86,10 @@
   border: none;
   border-radius: 8px ;
  }
+
+ @media (max-width: 500px) {
+   .posts-container {
+     padding-right: 0 !important;
+     padding-left: 0 !important;
+   }
+ }
