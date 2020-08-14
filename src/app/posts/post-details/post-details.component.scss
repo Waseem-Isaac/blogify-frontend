@@ -5,4 +5,75 @@
     h1, h3 {
         color: $main-color;
     }
+
+    .about-author {
+        img{
+            width: 60px; height: auto;
+        }
+    } 
+    .comment-list {
+        .comment {
+            img{
+                width: 60px;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+.post-content {
+    margin: 0px auto;
+}
+blockquote {
+    font-family: 'Special Elite', cursive;
+	font-weight: 100;
+	font-size: 2rem;
+	// max-width: 80%;
+	line-height: 1.4;
+	position: relative;
+	margin: 0px auto;
+    padding: .5rem;
+    background-color: #f8f9fa ;
+    color: $main-color;
+}
+
+blockquote:before,
+blockquote:after {
+	position: absolute;
+	color: $main-color ;
+	font-size: 8rem;
+	width: 4rem;
+	height: 4rem;
+}
+
+blockquote:before {
+	content: '“';
+	left: -4rem;
+	top: -2rem;
+}
+
+blockquote:after {
+	content: '”';
+	right: -4rem;
+	bottom: 1rem;
+}
+
+cite {
+	line-height: 3;
+	text-align: left;
+}
+@media( max-width: 767px) {
+    blockquote {
+        margin: 0px 50px;
+    }
+}
+@media( max-width: 500px) {
+    blockquote {
+        // max-width: 70%;
+        font-size: 1.3rem;
+    }
 }

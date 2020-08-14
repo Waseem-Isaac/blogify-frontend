@@ -10,7 +10,7 @@ const routes: Routes = [
         pathMatch: 'full'
     },
     {
-       path: 'post/:post_id',
+       path: ':post_id',
        component: PostDetailsComponent
     }
 ];

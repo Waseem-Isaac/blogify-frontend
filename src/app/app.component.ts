@@ -23,12 +23,21 @@ export class AppComponent implements OnInit {
 
     const onNavigationEnd =  this.router.events.pipe(filter(event => event instanceof NavigationEnd));
     onNavigationEnd.subscribe((route: NavigationEnd) => {
-      if (route.urlAfterRedirects.indexOf('/user/') > -1) {
-        document.querySelector('.pages-content').classList.add('pl-0');
+      this.closeHeaderSideMenu();
+
+      if (route.urlAfterRedirects !== '/posts') {
+        document.querySelector('.pages-content').classList.add('pt-5', 'p-3');
       } else {
-        document.querySelector('.pages-content').classList.remove('pl-0');
+        document.querySelector('.pages-content').classList.remove('pt-5', 'p-3');
       }
     });
+  }
+
+
+  closeHeaderSideMenu() {
+    document.querySelector('.header').classList.remove('ml-0');
+    document.querySelector('.header-content').classList.remove('ml-0');
+    document.querySelector('.header-side-menu-toggler').classList.remove('opened');
   }
 
 }
