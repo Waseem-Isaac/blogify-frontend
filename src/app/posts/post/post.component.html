@@ -11,6 +11,9 @@
   <div class="text text-2 pl-md-4">
       <h3 class="mb-2">
 
+          <ng-container *ngIf="!imgLoaded">
+            <img class="sm w-50-h-50 rounded-circle" src="../../../assets/icons/img-placeholder.gif" alt="">
+        </ng-container>
         <img class="sm w-50-h-50 rounded-circle" [src]="post?.user?.picture" [hidden]="!imgLoaded" (load) ="imgLoaded = true" 
         (error) ="user_img2.src = 'https://ui-avatars.com/api/?background=f0f0f0&color=29a0e9&name='+post.user?.name"
         alt="" #user_img2>
@@ -31,8 +34,11 @@
           </p>
       </div>
       <p class="post-content">{{post.content}}</p>
-      <p><a href="#" class="btn-custom">Read More <span
-                  class="fa fa-chevron-right"></span></a></p>
+      <p>
+        <a [routerLink]="['post' , post._id]" class="btn-custom">Read More 
+          <span class="fa fa-chevron-right"></span>
+        </a>
+      </p>
   </div>
 
   <div *ngIf="currentUser['_id'] === post['user']['_id']">

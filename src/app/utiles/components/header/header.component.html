@@ -1,38 +1,31 @@
- <button (click)="openSideHeader(header, header_toggler)" 
-  class="header-side-menu-toggler mx-2" #header_toggler> <i class="fa fa-bars"></i>
+ <button (click)="openSideHeader(header, header_content, header_toggler)" 
+  class="header-side-menu-toggler" #header_toggler> <i class="fa fa-bars"></i>
 </button>
 
 
 <div class="header" #header>
 
-  <div class="home" [routerLink]="['/']">
-    <img class="m-2" src="../../../../assets/icons/favicon-header.png"
-    >
+ <div class="header-content" #header_content>
+    <div class="home" [routerLink]="['/']">
+      <img class="m-2" src="../../../../assets/icons/favicon-header.png"
+      >
 
-  </div>
+    </div>
+    
+    <div class="actions mt-5">
+          <button class="btn"  [routerLink]="['/']"  tooltip="Home" delay = "500">
+            <i class="fa fa-home icon" ></i>
+          </button>  
+          <button class="btn"  [routerLink]="['/profile']"  tooltip="Profile" delay = "500">
+            <i class="fa fa-user icon" ></i>
+          </button>   
 
-
-  <!-- <div class="user" [routerLink]="['/profile']">
-    <img class="m-2" [src]="user['picture']" (load)="imageLoaded = true" alt=""
-      (error) ="user_img.src = 'https://ui-avatars.com/api/?background=29a0e9&color=fff&name='+user['name']"
-    #user_img
-    >
-    <span class="username">{{user['name']}}</span>
-  </div> -->
-  
-  <div class="actions mt-5">
-        <button class="btn"  [routerLink]="['/']"  tooltip="Home" delay = "500">
-          <i class="fa fa-home icon" ></i>
-        </button>  
-        <button class="btn"  [routerLink]="['/profile']"  tooltip="Profile" delay = "500">
-          <i class="fa fa-user icon" ></i>
-        </button>   
-
-        <button class="btn" (click)="openPostFormCMPT()" tooltip="New Post" delay = "500">
-          <i class="fa fa-sticky-note icon" ></i>
-        </button>
-        <button class="btn btn-danger" (click)="logout()"  tooltip="Log Out" delay = "500">
-          <i class="fa fa-sign-out-alt icon"></i>
-        </button>
-  </div>
+          <button class="btn" (click)="openPostFormCMPT()" tooltip="New Post" delay = "500">
+            <i class="fa fa-sticky-note icon" ></i>
+          </button>
+          <button class="btn btn-danger" (click)="logout()"  tooltip="Log Out" delay = "500">
+            <i class="fa fa-sign-out-alt icon"></i>
+          </button>
+    </div>
+ </div>
 </div>

@@ -10,18 +10,27 @@
             top: 10px;
         }
         background-color: $main-color;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
+        
         padding: 10px;
         height: 100vh;
-        z-index: 1000;
+        z-index: 1001;
         box-shadow: 0px 0px 5px;
         transition: all .2s ease;
 
         width: 100px;
-        position: fixed;
+        height: 100%;
+        // position: fixed;
+        .header-content {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            position: fixed;
+            width: 100px;
+            left: 0;
+            transition: all .2s ease;
+        }
         .user , .home{
             outline: none;
             text-align: center;
@@ -61,6 +70,9 @@
     @media (max-width: 992px) {
         .header {
             width: 50px;
+            .header-content{
+                width: 50px;
+            }
             .user , .home{
                 img { width: 30px; height: 30px;}
                 .username { display: none;}
@@ -110,8 +122,12 @@
 
     @media (max-width: 400px) {
         .header {
-            // display: none;
+            position: relative;
             margin-left: -50px;
+
+            .header-content {
+                margin-left: -50px;
+            }
         }
     }
 }
@@ -125,24 +141,24 @@
 .header-side-menu-toggler {   
     position: fixed;
     font-size: 15px;
-    top: 60px;
-    left: -20px;
-    background: #29a0e9;
+    top: 20px;
+    left: 10px;
+    background: transparent;
     width: 30px;
     height: 30px;
     justify-content: center;
     align-items: center;
     border: none;
     outline: none;
-    border-radius: 50%;
-    color: #fff ;
-    box-shadow: 0px 0px 4px #777;
+    // border-radius: 50%;
+    color: #29a0e9 ;
+    // box-shadow: 0px 0px 4px #777;
     z-index: 100000;
 }
 
 .header-side-menu-toggler.opened {
-    background: #fff;
-    color: #29a0e9;
+    background: transparent;
+    color: #fff;
 }
 
 @media (min-width: 400px) {

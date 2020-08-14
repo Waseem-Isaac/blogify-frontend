@@ -5,6 +5,7 @@ import { PostsRoutingModule } from './posts-routing.module';
 import { PostFormComponent } from './post-form/post-form.component';
 import { UtilesModule } from '../utiles/utiles.module';
 import { PostComponent } from './post/post.component';
+import { PostDetailsComponent } from './post-details/post-details.component';
 
 @NgModule({
   imports: [
@@ -12,6 +13,6 @@ import { PostComponent } from './post/post.component';
     UtilesModule,
     PostsRoutingModule
   ],
-  declarations: [PostsComponent, PostComponent],
+  declarations: [PostsComponent, PostComponent, PostDetailsComponent],
 })
 export class PostsModule { }

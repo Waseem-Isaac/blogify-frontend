@@ -1,7 +1,7 @@
 <div class="d-flex">
     <app-header *ngIf="isLoggedIn$ | async"></app-header>
 <!-- <div class="pages-content" [ngClass]="{'mt-60': (isLoggedIn$ | async)}"> -->
-    <div class="pages-content w-100">
+    <div class="pages-content w-100" #pages_content>
         <router-outlet></router-outlet>
     </div>
 

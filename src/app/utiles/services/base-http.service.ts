@@ -18,9 +18,6 @@ export class BaseHttpServiceService {
         return this.httpClient.get(`${this.apiUrl}/${path}`);
         // return this.httpClient.get(`${this.apiUrl}/${path}`, {headers : { authorization : this._jwt}});
     }
-    getAllById(path, id) {
-        return this.httpClient.get(`${this.apiUrl}/${path}/${id}`);
-    }
 
     post(path , body) {
         return this.httpClient.post(`${this.apiUrl}/${path}` , body);
@@ -31,7 +28,9 @@ export class BaseHttpServiceService {
     delete(path) {
         return this.httpClient.delete(`${this.apiUrl}/${path}`);
     }
-    getById(id) {}
+    getById(path, id) {
+        return this.httpClient.get(`${this.apiUrl}/${path}/${id}`);
+    }
 
     upload(path, body) {
 

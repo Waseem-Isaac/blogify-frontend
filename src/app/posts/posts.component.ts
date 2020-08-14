@@ -82,7 +82,8 @@ export class PostsComponent implements OnInit , AfterViewInit{
   }
 
 
-  toggleSidefiter(sideFilter: HTMLElement) {
+  toggleSidefiter(sideToggler: HTMLElement , sideFilter: HTMLElement) {
+    sideToggler.classList.toggle('sidebar-toggler-opened')
     sideFilter.classList.toggle('sidebar-lg');
   }
 }

@@ -9,10 +9,10 @@
                             <button (click)="createPost()">What's on your mind ?</button>
                         </div>
 
-                        <div class="row p-5 px-md-5" *ngIf="posts; else loading">
+                        <div class="row p-5 px-md-5 posts-content" *ngIf="posts; else loading">
 
                             <ng-container *ngIf="posts.length ;else noPosts">
-                                <div class="col-md-12 posts-container" *ngFor="let post of posts; let i= index">
+                                <div class="col-md-12 posts-container mb-4" *ngFor="let post of posts; let i= index">
                                     <app-post [post]="post" (edit)="editPost($event, i)" (delete)='deletePost($event, i)'></app-post>
                                 </div>
                             </ng-container>
@@ -24,15 +24,15 @@
                         <ng-template #loading>
                             <!-- <div class="loading-spinner"> -->
                                 <!-- <app-spinner [size]="'lg'"></app-spinner> -->
-                                <div class="p-4" *ngFor="let item of [1,2,3,4,5,6,7]">
-                                    <img class="m-3" src="../../../assets/icons/post-placeholder.gif" alt="">
+                                <div class="posts-content-placeholder p-4" *ngFor="let item of [1,2,3]">
+                                    <img class="m-3 post-img-placeholder" src="../../../assets/icons/post-placeholder.gif" alt="">
                                 </div>
 
                             <!-- </div> -->
                         </ng-template>
 
                     </div>
-                    <button class="sidebar-toggler" (click)="toggleSidefiter(side_filter)">
+                    <button class="sidebar-toggler" (click)="toggleSidefiter(sideToggler ,side_filter)" #sideToggler>
                         <i class="fa fa-filter "></i>
                     </button>
                     <div class="sidebar pt-5" #side_filter>

@@ -6,12 +6,12 @@
 }
 @media (min-width: 992px) {
   #colorlib-page {
-    padding-left: 100px;
+    /* padding-left: 100px; */
   }
 }
 @media (max-width: 992px) {
   #colorlib-page {
-    padding-left: 50px;
+    /* padding-left: 50px; */
   }
 }
 
@@ -524,6 +524,7 @@
     width: 25%;
     /* box-shadow: 5px 5px 10px #999 !important; */
     background-color: #fff;
+    z-index: 1001;
   }
 .sidebar-box {
   margin-bottom: 40px;

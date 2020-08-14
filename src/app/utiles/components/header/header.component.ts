@@ -43,8 +43,10 @@ export class HeaderComponent implements OnInit , AfterViewInit {
   ngAfterViewInit() {
   }
 
-  openSideHeader(header: HTMLElement, header_toggler: HTMLElement) {
+  openSideHeader(header: HTMLElement, header_content: HTMLElement ,  header_toggler: HTMLElement) {
     header.classList.toggle('ml-0');
+    header_content.classList.toggle('ml-0');
+
     header_toggler.classList.toggle('opened');
   }
 }

@@ -1,11 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PostsComponent } from './posts.component';
+import { PostDetailsComponent } from './post-details/post-details.component';
 
 const routes: Routes = [
     {
         path: '',
-        component: PostsComponent
+        component: PostsComponent,
+        pathMatch: 'full'
+    },
+    {
+       path: 'post/:post_id',
+       component: PostDetailsComponent
     }
 ];
 

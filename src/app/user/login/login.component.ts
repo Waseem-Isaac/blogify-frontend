@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { finalize } from 'rxjs/operators';
 import { UserService } from '../services/user.service';
@@ -54,8 +54,8 @@ export class LoginComponent implements OnInit {
 
     });
   }
-
 }
+
 
 
 export interface AuthResponse {

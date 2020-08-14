@@ -25,4 +25,8 @@ export class PostsService {
     deletePost(id) {
         return this.baseHttpService.delete('posts/' + id);
     }
+
+    getPost(id) {
+        return this.baseHttpService.getById('posts', id);
+    }
 }
