@@ -58,13 +58,20 @@
             font-weight: 400;
             font-size: 30px; 
             text-transform: capitalize;
-        //    a { color: #000; }
+           a { color: $main-color; }
         }
 
         .meta-wrap {
             width: 100%;
             display: block; 
             span {
+                &.icon {
+                    font-size: 14px;
+                    cursor: pointer;
+                    .active{
+                        color: $main-color;
+                    }
+                }
                 font-size: 12px;
                 margin: 0 10px 0 0;
                 color: #bfbfbf; 
@@ -72,17 +79,20 @@
                 font-weight: 600;
                
             }
+            a { color: $main-color; }
+
         }
             p, .post-content {
                 font-family: "Poppins", Arial, sans-serif;
                 background: #fff;
                 font-size: 15px;
-                line-height: 1.8;
+                line-height: 1.5;
                 font-weight: 400;
                 color: #666666
             }
             a {
-                text-decoration: none;    
+                text-decoration: none;  
+                color: $main-color-hover;
             }
             
       }

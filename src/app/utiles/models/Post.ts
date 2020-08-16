@@ -3,5 +3,6 @@ export interface Post {
     comments?: [any];
     user_id?: any;
     user?: {name , picture};
+    likes?: [String];
     _id?: string;
 }

@@ -51,7 +51,7 @@
             font-weight: 400;
             color: #fff;
             padding: 0 0.75rem;
-            background-color: #29a0e9;
+            background-color: $main-color;
             display: inline-block;
             cursor: pointer;
             height: 48px;
@@ -132,7 +132,7 @@
           box-shadow: none;
           transition: all .3s ease-in-out;
           &:enabled:hover {
-            background-color: #087dbd;
+            background-color: $main-color-hover;
           }
           &:disabled{
               background-color: #6666;
@@ -145,12 +145,12 @@
           display: block;
           margin: 0 auto 10px;
           text-align: center;
-          color: 29a0e9;
+          color: $main-color;
           text-decoration: none;
           text-transform: capitalize;
           transition: all 0.1s ease-in-out;
           &:hover {
-            color: 29a0e9;
+            color: $main-color-hover;
           }
         }
         @media all and (max-width: 767.98px) {
@@ -253,6 +253,7 @@
         margin-top: 20px;
         border: 0;
         border-radius: 0;
+        box-shadow: 0px 0px 2px 1px #d44950
       }
       .validation-text{
         font-size: 14px;

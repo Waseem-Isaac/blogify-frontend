@@ -4,7 +4,7 @@
           <app-spinner [size] = "'sm'"></app-spinner>
       </ng-container>
       <img class="w-100 h-100 rounded-circle" [src]="post?.user?.picture" [hidden]="!imgLoaded" (load) ="imgLoaded = true" 
-        (error) ="user_img1.src = 'https://ui-avatars.com/api/?background=f0f0f0&color=29a0e9&name='+post.user?.name"
+        (error) ="user_img1.src = 'https://ui-avatars.com/api/?background=f0f0f0&color=0e222e&name='+post.user?.name"
       alt="" #user_img1>
   </div>
 
@@ -15,21 +15,25 @@
             <img class="sm w-50-h-50 rounded-circle" src="../../../assets/icons/img-placeholder.gif" alt="">
         </ng-container>
         <img class="sm w-50-h-50 rounded-circle" [src]="post?.user?.picture" [hidden]="!imgLoaded" (load) ="imgLoaded = true" 
-        (error) ="user_img2.src = 'https://ui-avatars.com/api/?background=f0f0f0&color=29a0e9&name='+post.user?.name"
+        (error) ="user_img2.src = 'https://ui-avatars.com/api/?background=f0f0f0&color=0e222e&name='+post.user?.name"
         alt="" #user_img2>
 
         <a href="single.html">
           {{post.user?.name}} 
-          <span *ngIf="currentUser['_id'] === post['user']['_id']" class="badge badge-secondary">Me</span>
+          <span *ngIf="currentUser['_id'] === post['user']['_id']" class="badge badge-secondary p-1">Me</span>
         </a>
       </h3>
       <div class="meta-wrap">
           <p class="meta">
               <span><i class="far fa-calendar mr-1"></i>June 28, 2019</span>
-              <span><i class="fa-thumbs-up mr-1" [ngClass]="true ? 'far' : 'fa'" ></i>(0)</span>
-              <span><i class="far fa-comment-alt mr-1"></i>({{post.comments?.length}})</span>
-
               <span><a href="single.html"><i class="far fa-folder mr-1"></i>Travel</a></span>
+
+              <span class="icon" (click)="toggleLikes(post['user']['_id'])">
+                <i class="fa-heart mr-1" 
+                  [ngClass]="(post['likes'].indexOf(currentUser['_id']) > -1) ? 'fa active' : 'far'" 
+                >
+              </i>({{post.likes?.length}})</span>
+              <span class="icon"><i class="far fa-comment-alt mr-1"></i>({{post.comments?.length}})</span>
 
           </p>
       </div>

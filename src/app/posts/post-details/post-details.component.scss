@@ -28,52 +28,66 @@
 .post-content {
     margin: 0px auto;
 }
-blockquote {
-    font-family: 'Special Elite', cursive;
-	font-weight: 100;
-	font-size: 2rem;
-	// max-width: 80%;
-	line-height: 1.4;
-	position: relative;
-	margin: 0px auto;
-    padding: .5rem;
-    background-color: #f8f9fa ;
-    color: $main-color;
-}
 
-blockquote:before,
-blockquote:after {
-	position: absolute;
-	color: $main-color ;
-	font-size: 8rem;
-	width: 4rem;
-	height: 4rem;
-}
 
-blockquote:before {
-	content: '“';
-	left: -4rem;
-	top: -2rem;
-}
+ /* Blockquote main style */
+ .blockquote {
+     position: relative;
+     font-family: 'Special Elite', cursive;
+     font-weight: 800;
+     color: $main-color;
+     padding: 50px 0;
+     width: 100%;
+    //  max-width: 500px;
+     z-index: 1;
+     margin: 0 auto;
+     align-self: center;
+     border-top: solid 2px;
+     border-bottom: solid 2px;
+ }
+ 
+ /* Blockquote header */
+ .blockquote h1 {
+    font-family: cursive;
+     position: relative;
+     color: $main-color;
+     font-size: 30px;
+     font-weight: 800;
+     line-height: 1.4;
+     margin: 0;
 
-blockquote:after {
-	content: '”';
-	right: -4rem;
-	bottom: 1rem;
-}
-
-cite {
-	line-height: 3;
-	text-align: left;
-}
-@media( max-width: 767px) {
-    blockquote {
-        margin: 0px 50px;
+ }
+ 
+ /* Blockquote right double quotes */
+ .blockquote:after {
+     position: absolute;
+     content: "”";
+     color: $main-color;
+     font-size: 10rem;
+     line-height: 0;
+     bottom: -50px;
+     right: 0px;
+     @media (max-width: 500px) {
+            font-size: 7rem;
+     }  
+ }
+ 
+ /* increase header size after 600px */
+ @media all and (min-width: 600px) {
+     .blockquote h1 {
+         font-size: 30px;
     }
-}
-@media( max-width: 500px) {
-    blockquote {
-        // max-width: 70%;
-        font-size: 1.3rem;
-    }
-}
+ 
+ }
+ 
+ /* Blockquote subheader */
+ .blockquote h4 {
+     position: relative;
+     color: $main-color;
+     font-size: 1.3rem;
+     font-weight: normal;
+     line-height: 1;
+     margin: 0;
+     padding-top: 20px;
+     z-index: 1;
+ }

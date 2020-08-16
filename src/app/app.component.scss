@@ -1,5 +1,6 @@
+@import '../variables.scss';
 .pages-content {
-        min-height: 90vh;
+        min-height: 100vh;
     //     padding-left: 100px;
     // @media (max-width: 992px) {
     //     padding-left: 50px;
@@ -14,6 +15,6 @@
 }
 
 .menu_toggler-alt {
-    background: #29a0e9 !important;
+    background: $main-color !important;
     color: #fff !important;
 }

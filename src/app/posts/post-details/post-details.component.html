@@ -5,11 +5,21 @@
 				<div class="d-flex">
 					<div class="px-md-5">
 						<div class="row pt-md-4">
-							<div class="w-75 post-content">
-								<blockquote class="w-100 post-content p-3">
+							<div class="w-100 post-content">
+								<!-- <blockquote class="w-100 post-content p-3">
 									{{post?.content}}
-									<!-- The man who comes back through the door in the wall will never be quite the same as the man who went out. -->
-								</blockquote>
+								</blockquote> -->
+
+								<div class="blockquote-wrapper">
+									<div class="blockquote">
+									  <h1>
+										{{post?.content}}
+										Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid ducimus neque odio, placeat est tempora aspernatur dolores, assumenda eius veniam minima perferendis blanditiis sit quam nisi cumque dolore veritatis harum?
+									   </h1>
+									  <h4>&mdash;{{post?.user?.name}}</h4>
+									</div>
+								  </div>
+									
 							</div>
 
 
@@ -20,7 +30,7 @@
 										<div class="vcard bio">
 											<!-- <img src="images/person_1.jpg" alt="Image placeholder"> -->
 											<img class="rounded-circle" [src]="post?.user?.picture"
-												(error)="user_img2.src = 'https://ui-avatars.com/api/?background=f0f0f0&color=29a0e9&name='+post.user?.name"
+												(error)="user_img2.src = 'https://ui-avatars.com/api/?background=f0f0f0&color=0e222e&name='+post.user?.name"
 												alt="" #user_img2>
 										</div>
 										<div class="comment-body">
