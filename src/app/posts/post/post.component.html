@@ -28,12 +28,12 @@
               <span><i class="far fa-calendar mr-1"></i>June 28, 2019</span>
               <span><a href="single.html"><i class="far fa-folder mr-1"></i>Travel</a></span>
 
-              <span class="icon" (click)="toggleLikes(post['user']['_id'])">
+              <span class="icon" (click)="toggleLikes(currentUser['_id'])">
                 <i class="fa-heart mr-1" 
-                  [ngClass]="(post['likes'].indexOf(currentUser['_id']) > -1) ? 'fa active' : 'far'" 
+                  [ngClass]="(post['liked']) ? 'fa active' : 'far'" 
                 >
-              </i>({{post.likes?.length}})</span>
-              <span class="icon"><i class="far fa-comment-alt mr-1"></i>({{post.comments?.length}})</span>
+              </i>({{numberOfLikes}})</span>
+              <span class="icon"><i class="far fa-thun-alt mr-1"></i>({{post.comments?.length}})</span>
 
           </p>
       </div>

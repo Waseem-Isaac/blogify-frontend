@@ -16,7 +16,8 @@ export class PostComponent implements OnInit {
   @Output() edit = new EventEmitter<Post>();
 
   imgLoaded = false;
-  currentUser = localStorage.getItem('credentials') || null;
+  currentUser = localStorage.getItem('credentials') || sessionStorage.getItem('credentials') || null;
+  numberOfLikes: number;
 
   constructor(
     private modalService: NgbModal, private toastrService: ToastrService,
@@ -26,6 +27,8 @@ export class PostComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.numberOfLikes = this.post.likes.length;
+    this.post['liked'] = this.post.likes.indexOf(this.currentUser['_id']) > -1;
   }
 
 
@@ -38,13 +41,10 @@ export class PostComponent implements OnInit {
   }
 
   toggleLikes(userId) {
-    const index = this.post.likes.indexOf(userId);
-    index > -1 ? this.post.likes.splice(index , 1) : this.post.likes.push(userId);
-    
-    // this.postsService.editPost({content: this.post['content'] , likes: this.post.likes}, this.post._id).subscribe(res => {
-    //   console.log(res);
-    // }, err => {
-    //   console.log(err);
-    // })
+    this.postsService.like(this.post._id , userId).subscribe(res => {
+      this.post['liked'] = !this.post['liked'];
+      console.log(res);
+      this.numberOfLikes = res['numberOfLikes'];
+    }, err => console.log('Error: ', err));
   }
 }

@@ -29,4 +29,8 @@ export class PostsService {
     getPost(id) {
         return this.baseHttpService.getById('posts', id);
     }
+
+    like(postId: string, userId: string) {
+        return this.baseHttpService.put(`posts/${postId}/like` , {userId: userId});
+    }
 }
