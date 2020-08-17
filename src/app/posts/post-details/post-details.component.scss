@@ -13,6 +13,9 @@
     } 
     .comment-list {
         .comment {
+            .badge {
+                background: $main-color;
+            }
             img{
                 width: 60px;
             }

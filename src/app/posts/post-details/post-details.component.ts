@@ -11,10 +11,12 @@ import { Post } from 'src/app/utiles/models/Post';
 export class PostDetailsComponent implements OnInit {
   postId = '';
   post: Post;
+  currentUser = localStorage.getItem('credentials') || sessionStorage.getItem('credentials') || null;
 
   constructor(private postsService: PostsService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+   this.currentUser = this.currentUser && JSON.parse(this.currentUser).userData;
    this.postId = this.route.snapshot.params['post_id'];
    this.getPost(this.postId);
   }
@@ -27,4 +29,12 @@ export class PostDetailsComponent implements OnInit {
     });
   }
 
+
+  addComment(comment: string) {
+    
+    this.postsService.comment(this.postId, this.currentUser['_id'], comment.trim()).subscribe(res => {
+      console.log(res);
+      this.post.comments.push({content: comment.trim(), user: this.currentUser});
+    }, err => console.log(err));
+  }
 }
