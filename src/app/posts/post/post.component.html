@@ -4,7 +4,7 @@
           <app-spinner [size] = "'sm'"></app-spinner>
       </ng-container>
       <img class="w-100 h-100 rounded-circle" [src]="post?.user?.picture" [hidden]="!imgLoaded" (load) ="imgLoaded = true" 
-        (error) ="user_img1.src = 'https://ui-avatars.com/api/?background=f0f0f0&color=0e222e&name='+post.user?.name"
+        (error) ="user_img1.src = 'https://ui-avatars.com/api/?background=f0f0f0&color=29a0e9&name='+post.user?.name"
       alt="" #user_img1>
   </div>
 
@@ -15,7 +15,7 @@
             <img class="sm w-50-h-50 rounded-circle" src="../../../assets/icons/img-placeholder.gif" alt="">
         </ng-container>
         <img class="sm w-50-h-50 rounded-circle" [src]="post?.user?.picture" [hidden]="!imgLoaded" (load) ="imgLoaded = true" 
-        (error) ="user_img2.src = 'https://ui-avatars.com/api/?background=f0f0f0&color=0e222e&name='+post.user?.name"
+        (error) ="user_img2.src = 'https://ui-avatars.com/api/?background=f0f0f0&color=29a0e9&name='+post.user?.name"
         alt="" #user_img2>
 
         <a href="single.html">

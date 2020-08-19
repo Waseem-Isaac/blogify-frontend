@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
     onNavigationEnd.subscribe((route: NavigationEnd) => {
       this.closeHeaderSideMenu();
 
-      if (route.urlAfterRedirects !== '/posts') {
+      if (route.urlAfterRedirects !== '/posts' && route.urlAfterRedirects.indexOf('/user/') < 0) {
         document.querySelector('.pages-content').classList.add('pt-5', 'p-3');
       } else {
         document.querySelector('.pages-content').classList.remove('pt-5', 'p-3');
@@ -35,9 +35,11 @@ export class AppComponent implements OnInit {
 
 
   closeHeaderSideMenu() {
-    document.querySelector('.header').classList.remove('ml-0');
-    document.querySelector('.header-content').classList.remove('ml-0');
-    document.querySelector('.header-side-menu-toggler').classList.remove('opened');
+      if (document.querySelector('.header')) {
+      document.querySelector('.header').classList.remove('ml-0');
+      document.querySelector('.header-content').classList.remove('ml-0');
+      document.querySelector('.header-side-menu-toggler').classList.remove('opened');
+    }
   }
 
 }

@@ -29,7 +29,7 @@
 									<li class="comment" *ngFor="let comment of post?.comments">
 										<div class="vcard bio">
 											<img class="rounded-circle" [src]="comment?.user?.picture"
-												(error)="user_img2.src = 'https://ui-avatars.com/api/?background=f0f0f0&color=0e222e&name='+comment.user?.name"
+												(error)="user_img2.src = 'https://ui-avatars.com/api/?background=f0f0f0&color=29a0e9&name='+comment.user?.name"
 												alt="" #user_img2>
 										</div>
 										<div class="comment-body">
@@ -72,8 +72,9 @@
 	<ng-template #loading>
 		<!-- <div class="loading-spinner"> -->
 		<!-- <app-spinner [size]="'lg'"></app-spinner> -->
-		<div class="p-4">
-			<img class="m-3 w-100" src="../../../assets/icons/post-placeholder.gif" alt="">
+		<div class="">
+			<img class="w-100" src="../../../assets/icons/PageContantLading.gif" alt="">
+			<img class="w-100" src="../../../assets/icons/PageContantLading.gif" alt="">
 		</div>
 
 		<!-- </div> -->
