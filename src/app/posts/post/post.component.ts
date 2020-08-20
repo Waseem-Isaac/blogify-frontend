@@ -12,6 +12,7 @@ import { PostsService } from '../services/posts.service';
 })
 export class PostComponent implements OnInit {
   @Input() post;
+  @Input() postType;
   @Output() delete = new EventEmitter<Post>();
   @Output() edit = new EventEmitter<Post>();
 

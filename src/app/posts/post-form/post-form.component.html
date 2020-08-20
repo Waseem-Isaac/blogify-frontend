@@ -25,10 +25,10 @@
   <div class="modal-footer">
     <div [ngSwitch]="formType" class="w-100">
       <div *ngSwitchCase="'create'">
-        <button type="button" (click)="createPost()" class="btn btn-block save-post" [disabled]="!postContent || !this.postContent.trim()">Save Post</button>
+        <button type="button" (click)="createPost()" class="btn btn-block save-post" [disabled]="!postContent || !postContent.trim()">Save Post</button>
       </div>
       <div *ngSwitchCase="'edit'">
-        <button type="button" (click)="editPost()" class="btn btn-block save-post" [disabled]="!postContent || !this.postContent.trim()">Edit Post</button>
+        <button type="button" (click)="editPost()" class="btn btn-block save-post" [disabled]="!postContent || !postContent.trim()">Edit Post</button>
       </div>
       <div *ngSwitchCase="'delete'">
         <button type="button" (click)="delete_post()" class="btn btn-block delete-post">Delete Post</button>

@@ -6,24 +6,11 @@
 					<div class="px-md-5">
 						<div class="row pt-md-4">
 							<div class="w-100 post-content">
-								<!-- <blockquote class="w-100 post-content p-3">
-									{{post?.content}}
-								</blockquote> -->
-
-								<div class="blockquote-wrapper">
-									<div class="blockquote">
-									  <h1>
-										{{post?.content}}
-										<!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid ducimus neque odio, placeat est tempora aspernatur dolores, assumenda eius veniam minima perferendis blanditiis sit quam nisi cumque dolore veritatis harum? -->
-									   </h1>
-									  <h4>&mdash;{{post?.user?.name}}</h4>
-									</div>
-								  </div>
-									
+								<app-post [post]="post" [postType]="'long'"></app-post>
 							</div>
 
 
-							<div class="pt-5 mt-5 w-100">
+							<div class="mt-5 pt-2 w-100">
 								<h3 class="mb-5 font-weight-bold">{{post?.comments?.length}} Comments</h3>
 								<ul class="comment-list" *ngIf="post?.comments?.length">
 									<li class="comment" *ngFor="let comment of post?.comments; let i = index">
@@ -52,10 +39,11 @@
 										<div class="form-group">
 											<label for="message">Comment</label>
 											<textarea name="" id="message" cols="30" rows="10"
-												class="form-control" #comment></textarea>
+												class="form-control" [(ngModel)]="comment"></textarea>
 										</div>
 										<div class="form-group">
-											<button (click)='addComment(comment.value)' class="btn py-3 px-4 btn-primary">Post Comment</button>
+											<button (click)='addComment(comment)' class="submit-btn py-3 px-4" 
+												[disabled]="!comment || !comment.trim()">Post Comment</button>
 										</div>
 
 									</div>
@@ -72,7 +60,14 @@
 	<ng-template #loading>
 		<!-- <div class="loading-spinner"> -->
 		<!-- <app-spinner [size]="'lg'"></app-spinner> -->
-		<div class="">
+		<div class="placeholder-img-container"
+			[style.background]="'url(../../../assets/icons/PageContantLading.gif)'"
+		>
+			<img class="w-100" src="../../../assets/icons/PageContantLading.gif" alt="">
+			<img class="w-100" src="../../../assets/icons/PageContantLading.gif" alt="">
+
+			
+			<img class="w-100" src="../../../assets/icons/PageContantLading.gif" alt="">
 			<img class="w-100" src="../../../assets/icons/PageContantLading.gif" alt="">
 			<img class="w-100" src="../../../assets/icons/PageContantLading.gif" alt="">
 		</div>

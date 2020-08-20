@@ -12,6 +12,7 @@ export class PostDetailsComponent implements OnInit {
   postId = '';
   post: Post;
   currentUser = localStorage.getItem('credentials') || sessionStorage.getItem('credentials') || null;
+  comment = '';
 
   constructor(private postsService: PostsService, private route: ActivatedRoute) { }
 
@@ -34,6 +35,7 @@ export class PostDetailsComponent implements OnInit {
     this.postsService.addComment(this.postId, this.currentUser['_id'], comment.trim()).subscribe(res => {
       console.log(res);
       this.post.comments.push({content: comment.trim(), user: this.currentUser});
+      this.comment = '';
     }, err => console.log(err));
   }
 

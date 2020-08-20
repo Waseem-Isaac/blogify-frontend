@@ -32,12 +32,32 @@
                     color: #fff;
                 }
             }
+            
             .badge {
                 background: $main-color;
             }
             img{
                 width: 60px;
             }
+        }
+    }
+    .comment-form-wrap {
+        button.submit-btn  {
+            background: $main-color;
+            border: none;
+            color: #fff;
+            border-radius:30px;
+            font-weight: 500;
+            transition: .2s all ease-in;
+            &:disabled {
+                background: $main-color-disabled;
+            }
+        }
+    }
+    .placeholder-img-container img:nth-last-child(-n+3){
+        display: none;
+        @media (max-width: 600px) {
+            display: block;
         }
     }
 }
@@ -47,69 +67,8 @@
 
 
 
+
+
 .post-content {
     margin: 0px auto;
 }
-
-
- /* Blockquote main style */
- .blockquote {
-     position: relative;
-     font-family: 'Special Elite', cursive;
-     font-weight: 800;
-     color: $main-color;
-     padding: 50px 0;
-     width: 100%;
-    //  max-width: 500px;
-     z-index: 1;
-     margin: 0 auto;
-     align-self: center;
-     border-top: solid 2px;
-     border-bottom: solid 2px;
- }
- 
- /* Blockquote header */
- .blockquote h1 {
-    font-family: 'Special Elite', cursive;
-    position: relative;
-     color: $main-color;
-     font-size: 30px;
-     font-weight: 800;
-     line-height: 1.4;
-     margin: 0;
-
- }
- 
- /* Blockquote right double quotes */
- .blockquote:after {
-     position: absolute;
-     content: "”";
-     color: $main-color;
-     font-size: 10rem;
-     line-height: 0;
-     bottom: -50px;
-     right: 0px;
-     @media (max-width: 500px) {
-            font-size: 7rem;
-     }  
- }
- 
- /* increase header size after 600px */
- @media all and (min-width: 600px) {
-     .blockquote h1 {
-         font-size: 30px;
-    }
- 
- }
- 
- /* Blockquote subheader */
- .blockquote h4 {
-     position: relative;
-     color: $main-color;
-     font-size: 1.3rem;
-     font-weight: normal;
-     line-height: 1;
-     margin: 0;
-     padding-top: 20px;
-     z-index: 1;
- }

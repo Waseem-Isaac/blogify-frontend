@@ -37,8 +37,9 @@
 
           </p>
       </div>
-      <p class="post-content">{{post.content}}</p>
-      <p>
+      <p class="post-content">{{(post.content.length > 50 && postType ==='short') ? post.content.substring(0,40)+'...' : post.content}}
+      </p>
+      <p *ngIf="postType === 'short'">
         <a [routerLink]="[post._id]" class="btn-custom">Read More 
           <span class="fa fa-chevron-right"></span>
         </a>
