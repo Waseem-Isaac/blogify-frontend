@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Category } from '../../models/category';
+import { FilterService } from './filter.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-side-filter',
@@ -6,10 +9,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./side-filter.component.scss']
 })
 export class SideFilterComponent implements OnInit {
+  categories$: Observable<Array<Category>> = this.filterService.getCategories();
 
-  constructor() { }
+  constructor(private filterService: FilterService) { }
 
   ngOnInit() {
   }
+
 
 }

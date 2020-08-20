@@ -14,7 +14,7 @@ export class BaseHttpServiceService {
     constructor(private httpClient: HttpClient) {
     }
 
-    getAll(path, tokenRequired?: boolean) {
+    getAll(path, tokenRequired?: boolean): Observable<any> {
         return this.httpClient.get(`${this.apiUrl}/${path}`);
         // return this.httpClient.get(`${this.apiUrl}/${path}`, {headers : { authorization : this._jwt}});
     }
