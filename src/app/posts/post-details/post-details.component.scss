@@ -13,6 +13,25 @@
     } 
     .comment-list {
         .comment {
+            position: relative;
+            button.delete-comment {
+                position: absolute; top: 0; right: 0;
+                background: #f0f0f0;
+                border: none;
+                margin: 5px;
+                outline: none;
+                color: $main-color;
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+                transition: all .3s ease;
+                &:hover{
+                    // border: 1px solid #888;
+                    background-color: #dc3545;
+                    border-color: #dc3545;
+                    color: #fff;
+                }
+            }
             .badge {
                 background: $main-color;
             }

@@ -34,7 +34,11 @@ export class PostsService {
         return this.baseHttpService.put(`posts/${postId}/like` , {userId: userId});
     }
 
-    comment(postId: string, userId: string, commentContent: string) {
+    addComment(postId: string, userId: string, commentContent: string) {
         return this.baseHttpService.post(`comments/${postId}`, {content : commentContent, user_id: userId});
+    }
+
+    deleteComment(postId: string, commentId: string) {
+        return this.baseHttpService.delete(`comments/${postId}/${commentId}`);
     }
 }

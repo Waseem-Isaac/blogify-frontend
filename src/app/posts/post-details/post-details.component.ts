@@ -31,10 +31,17 @@ export class PostDetailsComponent implements OnInit {
 
 
   addComment(comment: string) {
-    
-    this.postsService.comment(this.postId, this.currentUser['_id'], comment.trim()).subscribe(res => {
+    this.postsService.addComment(this.postId, this.currentUser['_id'], comment.trim()).subscribe(res => {
       console.log(res);
       this.post.comments.push({content: comment.trim(), user: this.currentUser});
     }, err => console.log(err));
+  }
+
+  deleteComment(index: number, commentId: string) {
+    this.postsService.deleteComment(this.postId, commentId).subscribe(res => {
+      this.post.comments.splice(index, 1);
+    }, err => {
+      console.log(err);
+    });
   }
 }
