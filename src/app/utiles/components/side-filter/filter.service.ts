@@ -1,16 +1,23 @@
 import { Injectable } from '@angular/core';
 import { BaseHttpServiceService } from '../../services/base-http.service';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { Category } from '../../models/category';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilterService {
+  categories$: BehaviorSubject<Category[]> = new BehaviorSubject([]);
 
-  constructor(private BaseHttpService: BaseHttpServiceService) { }
+  constructor(private BaseHttpService: BaseHttpServiceService) {
+    if (!this.categories$.getValue() || !this.categories$.getValue().length){
+      this.getCategories();
+    }
+  }
 
-  getCategories(): Observable<Array<Category>> {
-    return this.BaseHttpService.getAll('categories');
+  getCategories() {
+     this.BaseHttpService.getAll('categories').subscribe(res => {
+      this.categories$.next(res);
+    });
   }
 }

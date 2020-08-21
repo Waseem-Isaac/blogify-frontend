@@ -1,5 +1,5 @@
 <div class="profile">
- 
+ <div class="" *ngIf="user;else loading">
   <div class="top-bar d-md-flex">
     <div class="img img-2">
           <ng-container *ngIf="!imgLoaded">
@@ -42,4 +42,23 @@
         (edit)="editPost($event, i)" (delete)='deletePost($event, i)'
     ></app-post>
   </div>
+ </div>
+
+  <ng-template #loading>
+		<!-- <div class="loading-spinner"> -->
+		<!-- <app-spinner [size]="'lg'"></app-spinner> -->
+		<div class="placeholder-img-container"
+			[style.background]="'url(../../../assets/icons/PageContantLading.gif)'"
+		>
+			<img class="w-100" src="../../../assets/icons/PageContantLading.gif" alt="">
+			<img class="w-100" src="../../../assets/icons/PageContantLading.gif" alt="">
+
+			
+			<img class="w-100" src="../../../assets/icons/PageContantLading.gif" alt="">
+			<img class="w-100" src="../../../assets/icons/PageContantLading.gif" alt="">
+			<img class="w-100" src="../../../assets/icons/PageContantLading.gif" alt="">
+		</div>
+
+		<!-- </div> -->
+	</ng-template>
 </div>

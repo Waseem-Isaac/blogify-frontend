@@ -9,9 +9,10 @@ import { Observable } from 'rxjs';
   styleUrls: ['./side-filter.component.scss']
 })
 export class SideFilterComponent implements OnInit {
-  categories$: Observable<Array<Category>> = this.filterService.getCategories();
+  categories$ = this.filterService.categories$;
 
-  constructor(private filterService: FilterService) { }
+  constructor(private filterService: FilterService) {
+   }
 
   ngOnInit() {
   }

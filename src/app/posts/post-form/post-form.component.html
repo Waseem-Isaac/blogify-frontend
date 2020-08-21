@@ -19,6 +19,16 @@
       </h5>
       <ng-template #notDelete>
         <textarea class="form-control"  cols="10" rows="5" [(ngModel)]="postContent"></textarea>
+
+        <div class="my-3" *ngIf="categories$ | async as categories">
+          <ng-select 
+            [items]="categories"
+            [searchable]="true"
+            bindLabel="name"
+            bindValue="_id"
+            [(ngModel)]="postCategoryId">
+          </ng-select>
+        </div>
       </ng-template>
   </div>
   

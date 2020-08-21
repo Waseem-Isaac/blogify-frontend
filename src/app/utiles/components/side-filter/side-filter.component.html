@@ -12,21 +12,21 @@
   <div class="sidebar-box  " *ngIf="(categories$ | async) as categories">
     <h3 class="sidebar-heading">Categories</h3>
     <ul class="categories" *ngFor="let category of categories; let last = last">
-        <li [ngClass]="{'mb-0 pb-0 border-bottom-0': last}"><a href="#">{{category?.name}} <span>(6)</span></a></li>
+        <li [ngClass]="{'mb-0 pb-0 border-bottom-0': last}"><a >{{category?.name}} <span>(6)</span></a></li>
     </ul>
   </div>
   
   <div class="sidebar-box  ">
     <h3 class="sidebar-heading">Tag Cloud</h3>
     <ul class="tagcloud">
-        <a href="#" class="tag-cloud-link">animals</a>
-        <a href="#" class="tag-cloud-link">human</a>
-        <a href="#" class="tag-cloud-link">people</a>
-        <a href="#" class="tag-cloud-link">cat</a>
-        <a href="#" class="tag-cloud-link">dog</a>
-        <a href="#" class="tag-cloud-link">nature</a>
-        <a href="#" class="tag-cloud-link">leaves</a>
-        <a href="#" class="tag-cloud-link">food</a>
+        <a  class="tag-cloud-link">animals</a>
+        <a  class="tag-cloud-link">human</a>
+        <a  class="tag-cloud-link">people</a>
+        <a  class="tag-cloud-link">cat</a>
+        <a  class="tag-cloud-link">dog</a>
+        <a  class="tag-cloud-link">nature</a>
+        <a  class="tag-cloud-link">leaves</a>
+        <a  class="tag-cloud-link">food</a>
     </ul>
   </div>
   

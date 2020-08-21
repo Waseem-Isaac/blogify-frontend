@@ -13,7 +13,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit , AfterViewInit {
-  user = localStorage.getItem('credentials') || null;
+  user = localStorage.getItem('credentials') || sessionStorage.getItem('credentials') || null;
   imageLoaded = false;
 
   constructor(private userService: UserService, private router: Router,

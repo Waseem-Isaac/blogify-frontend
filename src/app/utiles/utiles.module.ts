@@ -5,6 +5,8 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgSelectModule } from '@ng-select/ng-select';
+
 import { AppInterceptor } from './app.interceptor';
 import { PostFormComponent } from '../posts/post-form/post-form.component';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
@@ -16,6 +18,7 @@ import { SideFilterComponent } from './components/side-filter/side-filter.compon
         CommonModule,
         NgbModalModule,
         FormsModule,
+        NgSelectModule,
         ReactiveFormsModule,
         RouterModule
     ],

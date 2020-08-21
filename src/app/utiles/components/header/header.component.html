@@ -19,7 +19,7 @@
           <button class="btn"  [routerLink]="['/']"  tooltip="Home" delay = "500">
             <i class="fa fa-home icon" ></i>
           </button>  
-          <button class="btn"  [routerLink]="['/profile']"  tooltip="Profile" delay = "500">
+          <button class="btn"  [routerLink]="['/profile', user['_id']]"  tooltip="Profile" delay = "500">
             <i class="fa fa-user icon" ></i>
           </button>   
 
