@@ -16,7 +16,8 @@
             position: relative;
             button.delete-comment {
                 position: absolute; top: 0; right: 0;
-                background: #f0f0f0;
+                font-size: 13px;
+                background: #f1f1f1;
                 border: none;
                 margin: 5px;
                 outline: none;
@@ -25,6 +26,7 @@
                 width: 30px;
                 height: 30px;
                 transition: all .3s ease;
+                display: flex; align-items: center; justify-content: center;
                 &:hover{
                     // border: 1px solid #888;
                     background-color: #dc3545;

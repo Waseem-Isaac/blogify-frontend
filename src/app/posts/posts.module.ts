@@ -9,12 +9,13 @@ import { PostDetailsComponent } from './post-details/post-details.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
+  declarations: [PostsComponent, PostComponent, PostDetailsComponent],
   imports: [
     CommonModule,
     UtilesModule,
     FormsModule,
     PostsRoutingModule
   ],
-  declarations: [PostsComponent, PostComponent, PostDetailsComponent],
+  exports: [PostComponent]
 })
 export class PostsModule { }

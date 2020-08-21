@@ -1,6 +1,45 @@
 <div class="profile">
-  <p>
-    profile works!
-  </p>
+ 
+  <div class="top-bar d-md-flex">
+    <div class="img img-2">
+          <ng-container *ngIf="!imgLoaded">
+            <app-spinner [size] = "'sm'"></app-spinner>
+        </ng-container>
+        <img class="w-100 h-100 rounded-circle" [src]="user?.picture" [hidden]="!imgLoaded" (load) ="imgLoaded = true" 
+          (error) ="user_img1.src = 'https://ui-avatars.com/api/?background=f0f0f0&color=29a0e9&name='+user?.name"
+        alt="" #user_img1>
+    </div>
   
+    <div class="text text-2 pl-md-4">
+        <h3 class="mb-2">
+  
+            <ng-container *ngIf="!imgLoaded">
+              <img class="sm w-50-h-50 rounded-circle" src="../../../assets/icons/img-placeholder.gif" alt="">
+          </ng-container>
+          <img class="sm w-50-h-50 rounded-circle" [src]="user?.picture" [hidden]="!imgLoaded" (load) ="imgLoaded = true" 
+          (error) ="user_img2.src = 'https://ui-avatars.com/api/?background=f0f0f0&color=29a0e9&name='+user?.name"
+          alt="" #user_img2>
+  
+          <h2 class="username">
+            {{user?.name}}
+            <span *ngIf="currentUser?._id === user?._id" class="badge badge-secondary p-1">Me</span>
+          </h2>
+        </h3>
+        <div class="meta-wrap">
+            <p class="meta">
+                <span><i class="far fa-envelope mr-1"></i>{{user?.email}}</span>
+                <!-- <span><a href="single.html"><i class="far fa-folder mr-1"></i>Travel</a></span> -->
+            </p>
+        </div>
+       
+    </div>
+  
+  </div>
+
+  <div class="m-4">
+    <h2>Previous Posts</h2>
+    <app-post *ngFor="let post of userPosts; let i = index" [post]="post" [postType]="'short'"
+        (edit)="editPost($event, i)" (delete)='deletePost($event, i)'
+    ></app-post>
+  </div>
 </div>

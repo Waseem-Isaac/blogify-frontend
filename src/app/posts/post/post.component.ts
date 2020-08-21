@@ -44,7 +44,6 @@ export class PostComponent implements OnInit {
   toggleLikes(userId) {
     this.postsService.like(this.post._id , userId).subscribe(res => {
       this.post['liked'] = !this.post['liked'];
-      console.log(res);
       this.numberOfLikes = res['numberOfLikes'];
     }, err => console.log('Error: ', err));
   }

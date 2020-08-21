@@ -11,20 +11,27 @@
     align-items: center;
 
     button {
-        background: transparent;
-        border: none;
-        margin: 5px;
-        outline: none;
-        color: $main-color;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        transition: all .2s ease;
-        &:hover{
-            // border: 1px solid #888;
-            background-color: $main-color;
-            color: #fff;
-        }
+                font-size: 13px;
+                background: #f1f1f1;
+                border: none;
+                margin: 5px;
+                outline: none;
+                color: $main-color;
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+                transition: all .2s ease;
+                &.edit:hover{
+                    background-color: $main-color;
+                    border-color: #dc3545;
+                    color: #fff;
+                }
+                &.delete:hover{
+                    // border: 1px solid #888;
+                    background-color: #dc3545;
+                    border-color: #dc3545;
+                    color: #fff;
+                }
     }
 }
 
@@ -35,6 +42,7 @@
 .blog-entry {
     width: 100%;
     // margin-bottom: 3em;
+    position: relative;
     border-bottom: 1px solid #f0f0f0; 
     padding: 15px 0;
 

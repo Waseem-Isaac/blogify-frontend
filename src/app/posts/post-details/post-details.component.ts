@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { PostsService } from '../services/posts.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from 'src/app/utiles/models/Post';
+import { ToastrService } from 'ngx-toastr';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PostFormComponent } from '../post-form/post-form.component';
 
 @Component({
   selector: 'app-post-details',
@@ -14,7 +17,8 @@ export class PostDetailsComponent implements OnInit {
   currentUser = localStorage.getItem('credentials') || sessionStorage.getItem('credentials') || null;
   comment = '';
 
-  constructor(private postsService: PostsService, private route: ActivatedRoute) { }
+  constructor(private postsService: PostsService, private route: ActivatedRoute, private router: Router,
+    private modalService: NgbModal, private toastrService: ToastrService) { }
 
   ngOnInit() {
    this.currentUser = this.currentUser && JSON.parse(this.currentUser).userData;
@@ -33,7 +37,6 @@ export class PostDetailsComponent implements OnInit {
 
   addComment(comment: string) {
     this.postsService.addComment(this.postId, this.currentUser['_id'], comment.trim()).subscribe(res => {
-      console.log(res);
       this.post.comments.push({content: comment.trim(), user: this.currentUser});
       this.comment = '';
     }, err => console.log(err));
@@ -45,5 +48,30 @@ export class PostDetailsComponent implements OnInit {
     }, err => {
       console.log(err);
     });
+  }
+
+
+  editPost(post, index?) {
+    const modalRef = this.modalService.open(PostFormComponent, { centered: true , windowClass: 'post-form-modal'});
+    modalRef.componentInstance.formType = 'edit';
+    modalRef.componentInstance.post = post;
+
+    modalRef.result.then(res => {
+      this.toastrService.success(res.message , 'Post Editted Successfully');
+      this.post = res['post'];
+    }).catch(() => null);
+  }
+
+  deletePost(post, index?) {
+    const modalRef = this.modalService.open(PostFormComponent, { centered: true , windowClass: 'post-form-modal'});
+    modalRef.componentInstance.formType = 'delete';
+    modalRef.componentInstance.post = post;
+    modalRef.componentInstance.deletePost = true;
+
+    modalRef.result.then(res => {
+      this.toastrService.success(res.message , 'Post Deleted Successfully');
+      this.router.navigate(['/posts'], {replaceUrl: true});
+    }).catch(() => null);
+
   }
 }

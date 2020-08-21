@@ -18,7 +18,7 @@
         (error) ="user_img2.src = 'https://ui-avatars.com/api/?background=f0f0f0&color=29a0e9&name='+post.user?.name"
         alt="" #user_img2>
 
-        <a href="single.html">
+        <a href="single.html" routerLink='/profile/{{post?.user?._id}}'>
           {{post.user?.name}} 
           <span *ngIf="currentUser['_id'] === post['user']['_id']" class="badge badge-secondary p-1">Me</span>
         </a>
@@ -33,14 +33,14 @@
                   [ngClass]="(post['liked']) ? 'fa active' : 'far'" 
                 >
               </i>({{numberOfLikes}})</span>
-              <span class="icon"><i class="far fa-thun-alt mr-1"></i>({{post.comments?.length}})</span>
+              <span class="icon"><i class="far fa-comment-alt mr-1"></i>({{post.comments?.length}})</span>
 
           </p>
       </div>
-      <p class="post-content">{{(post.content.length > 50 && postType ==='short') ? post.content.substring(0,40)+'...' : post.content}}
+      <p class="post-content">{{(post.content.length > 50 && postType ==='short') ? post.content.substring(0,25)+'...' : post.content}}
       </p>
       <p *ngIf="postType === 'short'">
-        <a [routerLink]="[post._id]" class="btn-custom">Read More 
+        <a [routerLink]="['/posts', post._id]" class="btn-custom">Read More 
           <span class="fa fa-chevron-right"></span>
         </a>
       </p>
@@ -48,8 +48,8 @@
 
   <div *ngIf="currentUser['_id'] === post['user']['_id']">
     <div class="actions">
-      <button (click)="editPost()"><i class="fa fa-pencil-alt" ></i></button>
-      <button (click)="deletePost()"><i class="fa fa-trash-alt" ></i></button>
+      <button (click)="editPost()" class="edit"><i class="fa fa-pencil-alt" ></i></button>
+      <button (click)="deletePost()" class="delete"><i class="fa fa-trash-alt" ></i></button>
     </div>
   </div>
 </div>

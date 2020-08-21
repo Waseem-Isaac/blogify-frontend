@@ -5,15 +5,18 @@ import { UtilesModule } from '../utiles/utiles.module';
 import { ProfileComponent } from './profile.component';
 import { UserRoutingModule } from '../user/user-routing.module';
 import { ProfileRoutingModule } from './profile-routing.module';
+import { PostsModule } from '../posts/posts.module';
+import { PostComponent } from '../posts/post/post.component';
 
 @NgModule({
-  declarations: [ProfileComponent],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     UtilesModule,
-    ProfileRoutingModule
-  ]
+    ProfileRoutingModule,
+    PostsModule,
+  ],
+  declarations: [ProfileComponent]
 })
 export class ProfileModule { }
