@@ -10,12 +10,21 @@
         </div>
       </div>
   </div>
-  <div class="sidebar-box  " *ngIf="(categories$ | async) as categories">
+  <div class="sidebar-box  " *ngIf="categories; else NoCat">
     <h3 class="sidebar-heading">Categories</h3>
     <ul class="categories" *ngFor="let category of categories; let last = last">
-        <li [ngClass]="{'mb-0 pb-0 border-bottom-0': last}"><a >{{category?.name}} <span>(6)</span></a></li>
+        <li [ngClass]="{'mb-0 pb-0 border-bottom-0': last}">
+          <a >{{category?.name}} 
+            <span>({{category?.numOfPosts}})</span>
+          </a>
+      </li>
     </ul>
   </div>
+  <ng-template #NoCat>
+    <img src="../../../../assets/icons/PageContantLading.gif" alt="">
+    <img src="../../../../assets/icons/PageContantLading.gif" alt="">
+
+  </ng-template>
   
   <div class="sidebar-box  ">
     <h3 class="sidebar-heading">Tag Cloud</h3>

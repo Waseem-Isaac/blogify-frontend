@@ -302,6 +302,8 @@
     /* box-shadow: 0px 0px 8px #fafafa; */
     background-color: #fafafa;
     z-index: 1001;
+    overflow: hidden !important;
+
   }
 .sidebar-box {
   margin-bottom: 40px;

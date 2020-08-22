@@ -34,7 +34,7 @@
 
 .sidebar-lg {
   visibility: visible !important;
-  padding: 20px !important;
+  padding: 60px 20px 20px !important;
   width: 250px !important;
   box-shadow: 5px 5px 10px #999 !important;
 }
@@ -118,4 +118,8 @@
    .posts-content, .posts-content-placeholder  {
      margin-top: 50px;
    }
+ }
+
+ .op-2 {
+   opacity: .2;
  }

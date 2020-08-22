@@ -44,6 +44,7 @@ export class PostsComponent implements OnInit , AfterViewInit{
 
   filterPosts(keyword: string) {
     this.query['q'] = keyword;
+    this.posts = null;
     this.loadAllPosts(this.query);
   }
   ngAfterViewInit() {
@@ -88,8 +89,18 @@ export class PostsComponent implements OnInit , AfterViewInit{
   }
 
 
-  toggleSidefiter(sideToggler: HTMLElement , sideFilter: HTMLElement) {
+  toggleSidefiter(sideToggler: HTMLElement , sideFilter: HTMLElement, postsContainerElement?: HTMLElement) {
     sideToggler.classList.toggle('sidebar-toggler-opened')
     sideFilter.classList.toggle('sidebar-lg');
+
+    sideToggler.classList.contains('sidebar-toggler-opened') ? postsContainerElement.classList.add('op-2') :
+                                                               postsContainerElement.classList.remove('op-2') 
+  }
+
+  closeSideFilter(sideToggler: HTMLElement , sideFilter: HTMLElement, postsContainerElement?: HTMLElement) {
+    sideToggler.classList.remove('sidebar-toggler-opened')
+    sideFilter.classList.remove('sidebar-lg');
+
+     postsContainerElement.classList.remove('op-2');
   }
 }

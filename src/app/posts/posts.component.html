@@ -3,7 +3,7 @@
         <section class="ftco-section ftco-no-pt ftco-no-pb">
             <!-- <div class="container-fluid"> -->
                 <div class="row d-flex">
-                    <div class="posts ">
+                    <div class="posts " #postsContainerElement>
                         <div class="d-flex p-2 new-post" >
                             <img src="../../assets/icons/favicon.png" alt="">
                             <button (click)="createPost()">What's on your mind ?</button>
@@ -32,12 +32,12 @@
                         </ng-template>
 
                     </div>
-                    <button class="sidebar-toggler" (click)="toggleSidefiter(sideToggler ,side_filter)" #sideToggler>
+                    <button class="sidebar-toggler" (click)="toggleSidefiter(sideToggler ,side_filter,postsContainerElement)" #sideToggler>
                         <i class="fa fa-filter "></i>
                     </button>
                     <div class="sidebar pt-5" #side_filter>
                         <div class="side-filter-container">
-                            <app-side-filter (filterData$)='filterPosts($event)'></app-side-filter>
+                            <app-side-filter [posts]='posts' (filterData$)='filterPosts($event); closeSideFilter(sideToggler ,side_filter, postsContainerElement)'></app-side-filter>
                         </div>
 
                     </div><!-- END COL -->
