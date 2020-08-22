@@ -17,6 +17,7 @@ import { PostFormComponent } from './post-form/post-form.component';
 })
 export class PostsComponent implements OnInit , AfterViewInit{
   posts: any[];
+  query = {};
   @ViewChild('side_filter') side_filter: ElementRef;
 
   constructor(private postsService: PostsService, private userService: UserService, private router: Router,
@@ -24,11 +25,11 @@ export class PostsComponent implements OnInit , AfterViewInit{
   ) { }
 
   ngOnInit() {
-      this.loadAllPosts();
+      this.loadAllPosts(this.query);
   }
 
-  loadAllPosts() {
-    this.postsService.loadAll().subscribe(
+  loadAllPosts(query) {
+    this.postsService.loadAll(query).subscribe(
       (res: any) => this.posts = res,
       (err) => {
         if (err.status === 401) {
@@ -40,6 +41,11 @@ export class PostsComponent implements OnInit , AfterViewInit{
       );
   }
 
+
+  filterPosts(keyword: string) {
+    this.query['q'] = keyword;
+    this.loadAllPosts(this.query);
+  }
   ngAfterViewInit() {
     this.postsService.postAdded$.subscribe(res => {
       if (this.posts) {

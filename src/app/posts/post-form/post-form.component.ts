@@ -44,6 +44,7 @@ export class PostFormComponent implements OnInit {
 
     this.postsService.savePost(body).subscribe(res => {
       res['post']['user'] = this.userData;
+      res['post']['category'] = this.categories$.getValue().find(c => c._id === body.category_id);
       this.activeModal.close(res);
     }, (err: HttpErrorResponse) => {
       const ErrMsg = err.error.message ? err.error.message : 'API Error : ' + err.statusText;

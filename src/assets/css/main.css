@@ -270,23 +270,6 @@
           color: #fff;
           background: black; }
 
-.search-form {
-  background: #fafafa;
-  padding: 10px; }
-  .search-form .form-group {
-    position: relative;
-    margin-bottom: 0; }
-    .search-form .form-group input {
-      padding-right: 50px;
-      font-size: 14px; }
-  .search-form .icon {
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%); }
-
 .subs-wrap {
   display: block;
   width: 100%;

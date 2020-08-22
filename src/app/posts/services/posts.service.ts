@@ -10,8 +10,8 @@ export class PostsService {
     constructor(private baseHttpService: BaseHttpServiceService) { }
 
 
-    loadAll() {
-        return this.baseHttpService.getAll('posts');
+    loadAll(query?) {
+        return query ? this.baseHttpService.getAll('posts' , query) : this.baseHttpService.getAll('posts');
     }
 
     savePost(body: Post){

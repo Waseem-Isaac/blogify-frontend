@@ -14,9 +14,8 @@ export class BaseHttpServiceService {
     constructor(private httpClient: HttpClient) {
     }
 
-    getAll(path, tokenRequired?: boolean): Observable<any> {
-        return this.httpClient.get(`${this.apiUrl}/${path}`);
-        // return this.httpClient.get(`${this.apiUrl}/${path}`, {headers : { authorization : this._jwt}});
+    getAll(path, query? ,tokenRequired?: boolean): Observable<any> {
+        return query ? this.httpClient.get(`${this.apiUrl}/${path}`, {params: query}) : this.httpClient.get(`${this.apiUrl}/${path}`);
     }
 
     post(path , body) {

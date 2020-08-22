@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Category } from '../../models/category';
 import { FilterService } from './filter.service';
 import { Observable } from 'rxjs';
@@ -10,12 +10,13 @@ import { Observable } from 'rxjs';
 })
 export class SideFilterComponent implements OnInit {
   categories$ = this.filterService.categories$;
+  keyword: string;
+  @Output() filterData$ = new EventEmitter<any>();
 
   constructor(private filterService: FilterService) {
    }
 
   ngOnInit() {
   }
-
 
 }

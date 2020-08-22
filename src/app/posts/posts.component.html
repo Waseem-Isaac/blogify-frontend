@@ -37,7 +37,7 @@
                     </button>
                     <div class="sidebar pt-5" #side_filter>
                         <div class="side-filter-container">
-                            <app-side-filter></app-side-filter>
+                            <app-side-filter (filterData$)='filterPosts($event)'></app-side-filter>
                         </div>
 
                     </div><!-- END COL -->
