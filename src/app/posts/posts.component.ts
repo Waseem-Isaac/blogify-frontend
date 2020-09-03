@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angula
 import {BaseHttpServiceService} from '../utiles/services/base-http.service';
 import { Observable, merge, observable } from 'rxjs';
 import { Post } from '../utiles/models/Post';
-import { catchError } from 'rxjs/operators';
+import { catchError, finalize } from 'rxjs/operators';
 import { PostsService } from './services/posts.service';
 import { UserService } from '../user/services/user.service';
 import { Router } from '@angular/router';
@@ -16,7 +16,8 @@ import { PostFormComponent } from './post-form/post-form.component';
   styleUrls: ['./posts.component.scss']
 })
 export class PostsComponent implements OnInit , AfterViewInit{
-  posts: any[];
+  posts: any[] = [];
+  isLoading = false;
   query = {};
   @ViewChild('side_filter') side_filter: ElementRef;
 
@@ -29,9 +30,13 @@ export class PostsComponent implements OnInit , AfterViewInit{
   }
 
   loadAllPosts(query) {
-    this.postsService.loadAll(query).subscribe(
+    this.isLoading = true;
+    this.postsService.loadAll(query).pipe(
+      finalize(() => this.isLoading = false)
+    ).subscribe(
       (res: any) => this.posts = res,
       (err) => {
+        this.isLoading = false;
         if (err.status === 401) {
           this.userService.logout().subscribe(() => {
               this.router.navigate(['/user/login'] , { replaceUrl: true});
@@ -49,7 +54,7 @@ export class PostsComponent implements OnInit , AfterViewInit{
   }
   ngAfterViewInit() {
     this.postsService.postAdded$.subscribe(res => {
-      if (this.posts) {
+      if (this.posts && this.posts.length) {
         this.posts.unshift(res['post']);
       }
     });

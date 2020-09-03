@@ -49,9 +49,10 @@
           .inputfile + label {
             font-size: 1rem;
             font-weight: 400;
-            color: #fff;
+            color: #333;
             padding: 0 0.75rem;
-            background-color: $main-color;
+            background-color: #f4f4f4;
+            border: 1px solid transparent;
             display: inline-block;
             cursor: pointer;
             height: 48px;
