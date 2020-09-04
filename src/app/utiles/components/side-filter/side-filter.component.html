@@ -10,24 +10,32 @@
         </div>
       </div>
   </div>
-  <div class="sidebar-box  " *ngIf="categories; else NoCat">
-    <h3 class="sidebar-heading">Categories</h3>
-    <ul class="categories" *ngFor="let category of categories; let last = last">
+  <div class="sidebar-box  " *ngIf="!loading; else loadingPlaceholder">
+    <ng-container *ngIf="categories?.length;">
+      <h3 class="sidebar-heading">Categories
+        <p class="small"> (Not finished yet) </p>
+      </h3>
+      
+      <ul class="categories" *ngFor="let category of categories; let last = last">
         <li [ngClass]="{'mb-0 pb-0 border-bottom-0': last}">
           <a >{{category?.name}} 
             <span>({{category?.numOfPosts}})</span>
           </a>
       </li>
     </ul>
+    </ng-container>
+
   </div>
-  <ng-template #NoCat>
+  <ng-template #loadingPlaceholder>
     <img src="../../../../assets/icons/PageContantLading.gif" alt="">
     <img src="../../../../assets/icons/PageContantLading.gif" alt="">
 
   </ng-template>
   
   <div class="sidebar-box  ">
-    <h3 class="sidebar-heading">Tag Cloud</h3>
+    <h3 class="sidebar-heading">Tag Cloud
+      <p class="small"> (Not finished yet) </p>
+    </h3>
     <ul class="tagcloud">
         <a  class="tag-cloud-link">animals</a>
         <a  class="tag-cloud-link">human</a>
@@ -43,7 +51,9 @@
   <div class="sidebar-box subs-wrap img py-4"
     style="background-image: url( assets/images/bg_1.jpg);">
     <div class="overlay"></div>
-    <h3 class="mb-4 sidebar-heading">Newsletter</h3>
+    <h3 class="mb-4 sidebar-heading">Newsletter
+      <p class="small"> (Not finished yet) </p>
+    </h3>
     <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia
     </p>
     <form action="#" class="subscribe-form">

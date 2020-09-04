@@ -11,7 +11,8 @@ import { map } from 'rxjs/operators';
 })
 export class SideFilterComponent implements OnInit {
   categories$ = this.filterService.categories$;
-  categories;
+  categories = [];
+  loading = true;
   keyword: string;
   @Output() filterData$ = new EventEmitter<any>();
   @Input() posts = [];
@@ -21,17 +22,8 @@ export class SideFilterComponent implements OnInit {
 
   ngOnInit() {
     setTimeout(() => {
-      this.categories$.pipe(map( res => {
-        res.map(category => {
-          category['numOfPosts'] = this.posts ? this.posts.filter(post => post['category']['_id'] === category['_id']).length : 0;
-        });
-        return res;
-      })).subscribe(res => this.categories = res);
+      this.categories$.subscribe(res => { this.loading = false; this.categories = res; } );
     }, 1000);
-  }
-
-  getPostsPerCategory(categoryId): number {
-   return 0;
   }
 
 }
