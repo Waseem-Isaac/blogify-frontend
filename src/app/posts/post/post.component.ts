@@ -22,6 +22,7 @@ export class PostComponent implements OnInit {
   
   postTime: string;
   diffDays: number;
+  difTimeInHours: any;
   postTimeInterval;
   constructor(
     private modalService: NgbModal, private toastrService: ToastrService,
@@ -48,13 +49,13 @@ export class PostComponent implements OnInit {
     const currentDate: any = new Date();
     const diffTime: any = Math.abs(postDate - currentDate);
     const difTimeInMins = ((diffTime / 1000) / 60).toFixed();
-    const difTimeInHours = ((diffTime / 1000) / 60 / 60).toFixed();
+    this.difTimeInHours = ((diffTime / 1000) / 60 / 60).toFixed();
     this.diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
     this.postTime =
       +this.diffDays < 2 ?
         ( +difTimeInMins > 59 ?
-            ( +difTimeInHours < 2 ? difTimeInHours + ' Hour ago' : difTimeInHours + ' Hours ago' ) :
+            ( +this.difTimeInHours < 2 ? this.difTimeInHours + ' Hour ago' : this.difTimeInHours + ' Hours ago' ) :
         ( +difTimeInMins < 2 ? 'Now' : difTimeInMins + ' Minutes ago')) :
       (  this.diffDays + ' Days ago');
 

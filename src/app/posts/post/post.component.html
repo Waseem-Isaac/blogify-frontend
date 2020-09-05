@@ -25,8 +25,9 @@
       </h3>
       <div class="meta-wrap">
           <p class="meta">
-              <span><i class="far mr-1" [ngClass]="diffDays > 1 ? 'fa-calendar' : 'fa-clock'"></i>{{
-                diffDays < 29 ? postTime : (post['createdAt'] | date ) + ' , ' +(post['createdAt'] | date:'shortTime')
+              <span><i class="far mr-1" [ngClass]="difTimeInHours > 1 ? 'fa-calendar' : 'fa-clock'"></i>{{
+                diffDays < 29 ? (diffDays > 1 ? postTime + ' , ' + (post['createdAt'] | date:'shortTime') : postTime) : 
+                               (post['createdAt'] | date ) + ' , ' +(post['createdAt'] | date:'shortTime')
               }}</span>
 
               <span><a><i class="far fa-folder mr-1"></i>{{post?.category?.name}}</a></span>
