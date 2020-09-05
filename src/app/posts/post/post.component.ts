@@ -21,6 +21,8 @@ export class PostComponent implements OnInit {
   numberOfLikes: number;
   
   postTime: string;
+  diffDays: number;
+  postTimeInterval;
   constructor(
     private modalService: NgbModal, private toastrService: ToastrService,
     private postsService: PostsService
@@ -35,26 +37,28 @@ export class PostComponent implements OnInit {
     this.getPostTime();
 
     if (this.postTime.indexOf('Minutes') > -1 || this.postTime.indexOf('Now') > -1) {
-      setInterval(() => {
+       this.postTimeInterval = setInterval(() => {
         this.getPostTime();
       }, 1000 * 60);
     }
   }
 
   getPostTime() {
-    const date1: any = new Date(this.post['createdAt']);
-    const date2: any = new Date();
-    const diffTime: any = Math.abs(date2 - date1);
+    const postDate: any = new Date(this.post['createdAt']);
+    const currentDate: any = new Date();
+    const diffTime: any = Math.abs(postDate - currentDate);
     const difTimeInMins = ((diffTime / 1000) / 60).toFixed();
     const difTimeInHours = ((diffTime / 1000) / 60 / 60).toFixed();
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    this.diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
     this.postTime =
-      diffDays < 2 ?
-        ( +difTimeInHours > 0 ?
+      +this.diffDays < 2 ?
+        ( +difTimeInMins > 59 ?
             ( +difTimeInHours < 2 ? difTimeInHours + ' Hour ago' : difTimeInHours + ' Hours ago' ) :
         ( +difTimeInMins < 2 ? 'Now' : difTimeInMins + ' Minutes ago')) :
-      diffDays + ' Days ago';
+      (  this.diffDays + ' Days ago');
+
+    if (+difTimeInMins > 59) { clearInterval(this.postTimeInterval); }
   }
 
   editPost() {

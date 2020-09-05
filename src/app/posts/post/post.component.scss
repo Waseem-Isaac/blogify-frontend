@@ -103,6 +103,9 @@
             a {
                 text-decoration: none;  
                 color: $main-color-hover;
+                &.read-more {
+                    font-size: 13px;
+                }
             }
             
       }

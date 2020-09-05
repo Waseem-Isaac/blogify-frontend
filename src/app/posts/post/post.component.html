@@ -25,7 +25,9 @@
       </h3>
       <div class="meta-wrap">
           <p class="meta">
-              <span><i class="far mr-1" [ngClass]="postTime.indexOf('Days') > -1 ? 'fa-calendar' : 'fa-clock'"></i>{{postTime}}</span>
+              <span><i class="far mr-1" [ngClass]="diffDays > 1 ? 'fa-calendar' : 'fa-clock'"></i>{{
+                diffDays < 29 ? postTime : (post['createdAt'] | date ) + ' , ' +(post['createdAt'] | date:'shortTime')
+              }}</span>
 
               <span><a><i class="far fa-folder mr-1"></i>{{post?.category?.name}}</a></span>
               <span class="icon" (click)="toggleLikes(currentUser['_id'])">
@@ -40,7 +42,7 @@
       <p class="post-content">{{(post.content.length > 50 && postType ==='short') ? post.content.substring(0,25)+'...' : post.content}}
       </p>
       <p *ngIf="postType === 'short'">
-        <a [routerLink]="['/posts', post._id]" class="btn-custom">Read More 
+        <a [routerLink]="['/posts', post._id]" class="btn-custom read-more">Read More 
           <span class="fa fa-chevron-right"></span>
         </a>
       </p>
