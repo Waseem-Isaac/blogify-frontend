@@ -25,9 +25,9 @@
       </h3>
       <div class="meta-wrap">
           <p class="meta">
-              <span><i class="far fa-calendar mr-1"></i>June 28, 2019</span>
-              <span><a><i class="far fa-folder mr-1"></i>{{post?.category?.name}}</a></span>
+              <span><i class="far mr-1" [ngClass]="postTime.indexOf('Days') > -1 ? 'fa-calendar' : 'fa-clock'"></i>{{postTime}}</span>
 
+              <span><a><i class="far fa-folder mr-1"></i>{{post?.category?.name}}</a></span>
               <span class="icon" (click)="toggleLikes(currentUser['_id'])">
                 <i class="fa-heart mr-1" 
                   [ngClass]="(post['liked']) ? 'fa active' : 'far'" 

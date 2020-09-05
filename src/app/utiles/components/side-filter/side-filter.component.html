@@ -11,7 +11,6 @@
       </div>
   </div>
   <div class="sidebar-box  " *ngIf="!loading; else loadingPlaceholder">
-    <ng-container *ngIf="categories?.length;">
       <h3 class="sidebar-heading">Categories
         <p class="small"> (Not finished yet) </p>
       </h3>
@@ -23,7 +22,6 @@
           </a>
       </li>
     </ul>
-    </ng-container>
 
   </div>
   <ng-template #loadingPlaceholder>

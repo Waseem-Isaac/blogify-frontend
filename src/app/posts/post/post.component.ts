@@ -19,7 +19,8 @@ export class PostComponent implements OnInit {
   imgLoaded = false;
   currentUser = localStorage.getItem('credentials') || sessionStorage.getItem('credentials') || null;
   numberOfLikes: number;
-
+  
+  postTime: string;
   constructor(
     private modalService: NgbModal, private toastrService: ToastrService,
     private postsService: PostsService
@@ -30,8 +31,31 @@ export class PostComponent implements OnInit {
   ngOnInit() {
     this.numberOfLikes = this.post.likes.length;
     this.post['liked'] = this.post.likes.indexOf(this.currentUser['_id']) > -1;
+
+    this.getPostTime();
+
+    if (this.postTime.indexOf('Minutes') > -1 || this.postTime.indexOf('Now') > -1) {
+      setInterval(() => {
+        this.getPostTime();
+      }, 1000 * 60);
+    }
   }
 
+  getPostTime() {
+    const date1: any = new Date(this.post['createdAt']);
+    const date2: any = new Date();
+    const diffTime: any = Math.abs(date2 - date1);
+    const difTimeInMins = ((diffTime / 1000) / 60).toFixed();
+    const difTimeInHours = ((diffTime / 1000) / 60 / 60).toFixed();
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    this.postTime =
+      diffDays < 2 ?
+        ( +difTimeInHours > 0 ?
+            ( +difTimeInHours < 2 ? difTimeInHours + ' Hour ago' : difTimeInHours + ' Hours ago' ) :
+        ( +difTimeInMins < 2 ? 'Now' : difTimeInMins + ' Minutes ago')) :
+      diffDays + ' Days ago';
+  }
 
   editPost() {
     this.edit.emit(this.post);
