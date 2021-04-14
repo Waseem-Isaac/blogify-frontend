@@ -100,6 +100,13 @@
         background-color: $main-color-hover;
       }
     }
+    animation: slide-down .2s ease;
+    margin-top: 1rem;
+    @keyframes slide-down {
+      0%   { opacity: 0;  }
+      50%  { opacity: .5; }
+      100% { opacity: 1;  }
+    }
 }
 
 ::ng-deep .modal-backdrop {

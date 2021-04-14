@@ -76,7 +76,8 @@ export class PostFormComponent implements OnInit {
   }
 
   delete_post() {
-    this.postsService.deletePost(this.post['_id']).subscribe(res => {
+    const socketId = this.pusherService.pusher.connection.socket_id;
+    this.postsService.deletePost(this.post['_id'],socketId).subscribe(res => {
       this.activeModal.close(res);
     }, (err: HttpErrorResponse) => {
       const ErrMsg = err.error.message ? err.error.message : 'API Error : ' + err.statusText;

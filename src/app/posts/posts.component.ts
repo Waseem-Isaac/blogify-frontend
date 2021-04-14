@@ -32,6 +32,9 @@ export class PostsComponent implements OnInit , AfterViewInit{
     this.pusherService.channel.bind('postAdded', data => {
       this.newPostAdded = true;
     });
+    this.pusherService.channel.bind('postDeleted', data => {
+      this.posts = this.posts.filter(post => post._id !== data.postId);
+    });
     this.loadAllPosts(this.query);
   }
 

@@ -24,15 +24,14 @@ export class BaseHttpServiceService {
     put(path , body) {
         return this.httpClient.put(`${this.apiUrl}/${path}` , body);
     }
-    delete(path) {
-        return this.httpClient.delete(`${this.apiUrl}/${path}`);
+    delete(path, body = {}) {
+        return this.httpClient.delete(`${this.apiUrl}/${path}`, {params: body});
     }
     getById(path, id) {
         return this.httpClient.get(`${this.apiUrl}/${path}/${id}`);
     }
 
     upload(path, body) {
-
         return this.httpClient.post(`${this.apiUrl}/${path}` , body, {headers : {'s-Type': 'ddd'}} );
     }
 }

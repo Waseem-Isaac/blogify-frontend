@@ -22,16 +22,16 @@ export class PostsService {
         return this.baseHttpService.put('posts/' + id , body);
     }
 
-    deletePost(id) {
-        return this.baseHttpService.delete('posts/' + id);
+    deletePost(id, socketId) {
+        return this.baseHttpService.delete('posts/' + id, {socketId});
     }
 
     getPost(id) {
         return this.baseHttpService.getById('posts', id);
     }
 
-    like(postId: string, userId: string) {
-        return this.baseHttpService.put(`posts/${postId}/like` , {userId: userId});
+    like(postId: string, userId: string,socketId: any) {
+        return this.baseHttpService.put(`posts/${postId}/like` , {userId: userId, socketId: socketId});
     }
 
     addComment(postId: string, userId: string, commentContent: string) {
