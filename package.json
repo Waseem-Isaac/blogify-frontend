@@ -32,6 +32,7 @@
     "fs-extra": "^9.0.1",
     "ngx-toastr": "^8.10.2",
     "path": "^0.12.7",
+    "pusher-js": "^7.0.3",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "typescript": "~3.1.6",

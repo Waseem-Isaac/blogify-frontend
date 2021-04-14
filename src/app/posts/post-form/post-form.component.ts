@@ -8,6 +8,7 @@ import { PostsService } from '../services/posts.service';
 import { Category } from 'src/app/utiles/models/category';
 import { Observable } from 'rxjs';
 import { FilterService } from 'src/app/utiles/components/side-filter/filter.service';
+import { PusherService } from 'src/app/utiles/services/pusher.service';
 
 @Component({
   selector: 'app-post-form',
@@ -26,7 +27,10 @@ export class PostFormComponent implements OnInit {
   userData: Object;
 
   constructor(private fb: FormBuilder, public activeModal: NgbActiveModal,
-    private toastr: ToastrService, private postsService: PostsService, private filterService: FilterService) {
+    private toastr: ToastrService, private postsService: PostsService, 
+    private filterService: FilterService,
+    private pusherService: PusherService
+    ) {
     this.userData = localStorage.getItem('credentials') && JSON.parse(localStorage.getItem('credentials'))['userData'] ||
       sessionStorage.getItem('credentials') && JSON.parse(sessionStorage.getItem('credentials'))['userData'] ||
       null;
@@ -40,7 +44,12 @@ export class PostFormComponent implements OnInit {
   }
 
   createPost() {
-    const body = { content: this.postContent.trim(), user_id: this.userData['_id'] , category_id: this.postCategoryId};
+    const body = { 
+      content: this.postContent.trim(), 
+      user_id: this.userData['_id'] , 
+      category_id: this.postCategoryId,
+      socketId: this.pusherService.pusher.connection.socket_id
+    };
 
     this.postsService.savePost(body).subscribe(res => {
       res['post']['user'] = this.userData;

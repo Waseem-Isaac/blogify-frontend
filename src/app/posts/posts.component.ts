@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { PostFormComponent } from './post-form/post-form.component';
+import { PusherService } from '../utiles/services/pusher.service';
 
 @Component({
   selector: 'app-posts',
@@ -20,13 +21,18 @@ export class PostsComponent implements OnInit , AfterViewInit{
   isLoading = false;
   query = {};
   @ViewChild('side_filter') side_filter: ElementRef;
+  newPostAdded = false;
 
   constructor(private postsService: PostsService, private userService: UserService, private router: Router,
-    private modalService: NgbModal, private toastrService: ToastrService  
+    private modalService: NgbModal, private toastrService: ToastrService,
+    private pusherService: PusherService 
   ) { }
 
   ngOnInit() {
-      this.loadAllPosts(this.query);
+    this.pusherService.channel.bind('postAdded', data => {
+      this.newPostAdded = true;
+    });
+    this.loadAllPosts(this.query);
   }
 
   loadAllPosts(query) {
@@ -34,7 +40,10 @@ export class PostsComponent implements OnInit , AfterViewInit{
     this.postsService.loadAll(query).pipe(
       finalize(() => this.isLoading = false)
     ).subscribe(
-      (res: any) => this.posts = res,
+      (res: any) => {
+        this.posts = res;
+        this.newPostAdded = false;
+      },
       (err) => {
         this.isLoading = false;
         if (err.status === 401) {

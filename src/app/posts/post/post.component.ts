@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { PostFormComponent } from '../post-form/post-form.component';
 import { Post } from 'src/app/utiles/models/Post';
 import { PostsService } from '../services/posts.service';
+import { PusherService } from 'src/app/utiles/services/pusher.service';
 
 @Component({
   selector: 'app-post',
@@ -26,12 +27,19 @@ export class PostComponent implements OnInit {
   postTimeInterval;
   constructor(
     private modalService: NgbModal, private toastrService: ToastrService,
-    private postsService: PostsService
+    private postsService: PostsService, private pusherService: PusherService
   ) {
     this.currentUser = this.currentUser && JSON.parse(this.currentUser).userData;
   }
 
   ngOnInit() {
+
+    this.pusherService.channel.bind('likeAdded', data => {
+      if(this.post._id === data.postId) {
+        this.numberOfLikes =  data.numberOfLikes;
+      }
+    });
+
     this.numberOfLikes = this.post.likes.length;
     this.post['liked'] = this.post.likes.indexOf(this.currentUser['_id']) > -1;
 
