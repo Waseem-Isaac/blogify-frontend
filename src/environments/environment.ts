@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api_url: 'https://blogify-backend.herokuapp.com/api/v1',
+  api_url: 'https://blogify.cyclic.app/api/v1',
   // api_url: 'http://localhost:3000/api/v1',
   pusher: {
     key: '365dcbf38c65b3376a80',
