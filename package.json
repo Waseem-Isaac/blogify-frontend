@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "export NODE_OPTIONS=--openssl-legacy-provider node server.js",
-    "build": "ng build --prod --base-href 'https://Waseem-Isaac.github.io/blogify-frontend/'",
+    "build": "ng build --prod --base-href https://Waseem-Isaac.github.io/blogify-frontend/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
